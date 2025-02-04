@@ -11,6 +11,10 @@ app.use(cors());
 
 // Rutas
 app.use('/api/records', recordRoutes);
+// Rutas
+app.use('/api/updatedia', updatediaRoutes);
+app.use('/api/weather', weatherRoutes);
+
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
