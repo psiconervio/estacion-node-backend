@@ -14,7 +14,7 @@ app.use('/api/records', recordRoutes);
 // Rutas
 app.use('/api/updatedia', updatediaRoutes);
 app.use('/api/weather', weatherRoutes);
-
+app.use('/api/uv', uvRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
