@@ -18,6 +18,7 @@ app.use('/api/uv', uvRoutes);
 app.use('/api/weekly', weeklyRoutes);
 app.use('/api/cronjobs', cronRoutes);
 app.use('/api/cronjobs', monthlyRoutes);
+app.use('/api', uvRoutes);
 
 
 
