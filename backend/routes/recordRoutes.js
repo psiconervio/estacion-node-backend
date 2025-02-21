@@ -1,5 +1,5 @@
 import express from 'express';
-import { postRecord, getRecord } from './controllers/recordController.js';
+import { postRecord, getRecord } from '../controllers/recordController.js';
 
 const router = express.Router();
 
