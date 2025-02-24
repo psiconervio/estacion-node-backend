@@ -1,0 +1,15 @@
+[
+    {
+      "id": "1",
+      "name": "Estación Norte",
+      "location": { "latitude": -34.6, "longitude": -58.3 },
+      "description": "Estación en el centro de la ciudad"
+    },
+    {
+      "id": "2",
+      "name": "Estación Sur",
+      "location": { "latitude": -35.2, "longitude": -58.8 },
+      "description": "Estación en la zona sur"
+    }
+  ]
+  
