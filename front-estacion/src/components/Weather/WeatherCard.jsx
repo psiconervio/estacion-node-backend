@@ -2,7 +2,7 @@
 import React from 'react';
 import WeatherVideo from './WeatherVideo';
 import WeatherStats from './WeatherStats';
-import Image from '../UI/Image'; // Puedes usar un componente de imagen o el tag <img>
+// import Image from '../UI/Image'; // Puedes usar un componente de imagen o el tag <img>
 import Uv from '../UV/Uv';
 
 const WeatherCard = ({ esp32Data, weatherData, uvData }) => {

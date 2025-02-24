@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import recordRoutes from './routes/recordRoutes.js';
+import stationRoutes from './routes/stationRoutes.js';
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 5000;
 // Middlewares
 app.use(express.json());
 app.use(cors());
+app.use("/api/stations", stationRoutes);
 
 // Rutas
 app.use('/api/records', recordRoutes);
