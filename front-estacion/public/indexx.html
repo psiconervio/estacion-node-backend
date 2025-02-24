@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estado de Sectores del Plano</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        position: relative;
+        width: 800px;
+        /* Ajusta el tamaño según la imagen del plano */
+        margin: 0 auto;
+      }
+
+      .container img {
+        width: 100%;
+        height: auto;
+      }
+
+      .sector {
+        position: absolute;
+        color: #fff;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .libre {
+        background-color: #28a74688;
+      }
+
+      .ocupado {
+        background-color: #dc354688;
+      }
+
+      .reservado {
+        background-color: #ffc10788;
+        color: #000;
+      }
+
+      /* Ajusta estas posiciones según la imagen del plano */
+      #sectorA {
+        top: 59px;
+    right: 190px;
+    padding: 20px;
+
+
+      }
+
+      #sectorB {
+        top: 60px;
+    left: 484px;
+    padding: 20px;
+
+      }
+
+      #sectorC {
+        top: 60px;
+    left: 407px;
+    padding: 20px;
+      }
+
+      #sectorD {
+        top: 152px;
+    left: 508px;
+    padding: 47px 60px;
+
+      }
+
+      #sectorE {
+        top: 129px;
+    left: 409px;
+    padding: 32px 38px;
+      }
+
+      #sectorF {
+        top: 220px;
+    left: 421px;
+    padding: 14px 25px;
+
+      }
+
+      #sectorG {
+        top: 125px;
+    left: 266px;
+    padding: 30px 50px;
+
+      }
+
+      #sectorH {
+        top: 219px;
+    left: 294px;
+    padding: 14px 25px;
+
+      }
+
+      #sectorI {
+        top: 137px;
+    left: 205px;
+    padding: 30px 20px;
+
+      }
+
+      #sectorJ {
+        top: 197px;
+    left: 140px;
+    padding: 20px 24px;
+
+      }
+
+      #sectorK {
+        top: 86px;
+    left: 144px;
+    padding: 20px;
+
+      }
+
+      #sectorP {
+        top: 14px;
+    left: 183px;
+    padding: 17px;
+
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Estado de Sectores del Plano</h1>
+    <div class="container">
+      <img src="xd.jpg" alt="Plano de Sectores" />
+      <div id="sectorA" class="sector libre">A</div>
+      <div id="sectorB" class="sector libre">B</div>
+      <div id="sectorC" class="sector libre">C</div>
+      <div id="sectorD" class="sector libre">D</div>
+      <div id="sectorE" class="sector libre">E</div>
+      <div id="sectorF" class="sector libre">F</div>
+      <div id="sectorG" class="sector libre">G</div>
+      <div id="sectorH" class="sector libre">H</div>
+      <div id="sectorI" class="sector libre">I</div>
+      <div id="sectorJ" class="sector libre">J</div>
+      <div id="sectorK" class="sector libre">K</div>
+      <div id="sectorP" class="sector libre">P</div>
+    </div>
+
+    <script>
+      const sectors = document.querySelectorAll(".sector");
+      const sectorStates =
+        JSON.parse(localStorage.getItem("sectorStates")) || {};
+
+      sectors.forEach((sector) => {
+        const id = sector.id;
+        if (sectorStates[id]) {
+          sector.classList.remove("libre", "ocupado", "reservado");
+          sector.classList.add(sectorStates[id]);
+        }
+
+        sector.addEventListener("click", () => {
+          if (sector.classList.contains("libre")) {
+            sector.classList.remove("libre");
+            sector.classList.add("ocupado");
+            sectorStates[id] = "ocupado";
+          } else if (sector.classList.contains("ocupado")) {
+            sector.classList.remove("ocupado");
+            sector.classList.add("reservado");
+            sectorStates[id] = "reservado";
+          } else if (sector.classList.contains("reservado")) {
+            sector.classList.remove("reservado");
+            sector.classList.add("libre");
+            sectorStates[id] = "libre";
+          }
+
+          localStorage.setItem("sectorStates", JSON.stringify(sectorStates));
+        });
+      });
+    </script>
+  </body>
+</html>

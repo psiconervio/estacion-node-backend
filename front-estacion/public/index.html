@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estado de Sectores del Plano</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            position: relative;
+            width: 800px;
+            /* Ajusta el tamaño según la imagen del plano */
+            margin: 0 auto;
+        }
+
+        .container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .sector {
+            position: absolute;
+            padding: 5px;
+            color: #fff;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .libre {
+            background-color: #28a745;
+        }
+
+        .ocupado {
+            background-color: #dc3545;
+        }
+
+        .reservado {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        /* Ajusta estas posiciones según la imagen del plano */
+        #sectorA {
+            top: 50px;
+            right: 165px;
+        }
+
+        #sectorB {
+            top: 50px;
+            left: 350px;
+        }
+
+        #sectorC {
+            top: 50px;
+            left: 450px;
+        }
+
+        #sectorD {
+            top: 160px;
+            left: 565px;
+        }
+
+        #sectorE {
+            top: 135px;
+            left: 440px;
+        }
+
+        #sectorF {
+            top: 230px;
+            left: 400px;
+        }
+
+        #sectorG {
+            top: 180px;
+    left: 311px;
+}
+
+        #sectorH {
+            top: 230px;
+    left: 270px;
+}
+
+        #sectorI {
+            top: 160px;
+    left: 190px;
+}
+
+        #sectorJ {
+            top: 230px;
+    left: 200px;
+}
+
+        #sectorK {
+            top: 100px;
+    left: 200px;
+}
+
+        #sectorP {
+            top: 45px;
+    left: 210px;
+}
+    </style>
+</head>
+
+<body>
+    <h1>Estado de Sectores del Plano</h1>
+    <div class="container">
+        <img src="xd.jpg" alt="Plano de Sectores">
+        <div id="sectorA" class="sector libre">A</div>
+        <div id="sectorB" class="sector ocupado">B</div>
+        <div id="sectorC" class="sector reservado">C</div>
+        <div id="sectorD" class="sector libre">D</div>
+        <div id="sectorE" class="sector ocupado">E</div>
+        <div id="sectorF" class="sector reservado">F</div>
+        <div id="sectorG" class="sector libre">G</div>
+        <div id="sectorH" class="sector ocupado">H</div>
+        <div id="sectorI" class="sector reservado">I</div>
+        <div id="sectorJ" class="sector libre">J</div>
+        <div id="sectorK" class="sector ocupado">K</div>
+        <div id="sectorP" class="sector reservado">P</div>
+    </div>
+</body>
+
+</html>
