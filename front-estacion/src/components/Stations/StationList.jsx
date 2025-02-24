@@ -29,7 +29,7 @@ const StationList = () => {
       {stations.map((station) => (
         <Link
           key={station.id}
-          to={`/station/${station.id}`}
+          to={`/weather/${station.id}`}
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <StationCard station={station} />

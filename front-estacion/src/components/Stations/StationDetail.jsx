@@ -1,4 +1,3 @@
-// src/components/Stations/StationDetail.jsx
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { fetchStationById } from "../../services/api";
@@ -29,18 +28,21 @@ const StationDetail = () => {
     return <div>No se encontró la estación.</div>;
   }
 
+  const { location = {}, name, esp32Data, weatherData, uvData } = station; // Desestructuración segura
+  const { latitude = "Sin latitud", longitude = "Sin longitud" } = location;
+
   return (
     <div style={{ padding: "20px" }}>
       <Link to="/">← Volver a la lista</Link>
-      <h1>{station.name}</h1>
-      <p>Ubicación: {station.location || "Desconocida"}</p>
+      <h1>{name || "Nombre desconocido"}</h1>
+      <p>Ubicación: {latitude}, {longitude}</p>
       <p>ID: {station.id}</p>
 
       {/* Muestra el componente de clima, pasándole los datos necesarios */}
       <WeatherCard
-        esp32Data={station.esp32Data}
-        weatherData={station.weatherData}
-        uvData={station.uvData}
+        esp32Data={esp32Data}
+        weatherData={weatherData}
+        uvData={uvData}
       />
     </div>
   );

@@ -18,7 +18,7 @@ app.use(cors());
 // mongoose.connect("mongodb://localhost/weatherDB", { useNewUrlParser: true, useUnifiedTopology: true });
 
 // app.use("/api/stations", stationRoutes);
-// app.use("/api/weather", weatherRoutes);
+app.use("/api/weather", weatherRoutes);
 //HASTA ACA CONFIGURACION ESTACION DE CLIMA
 
 app.use("/api/stations", stationRoutes);

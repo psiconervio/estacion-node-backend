@@ -5,12 +5,6 @@
         "humidity": 75,
         "windSpeed": 10.2,
         "recordedAt": "2024-02-24T10:00:00Z"
-      },
-      {
-        "temperature": 21.8,
-        "humidity": 78,
-        "windSpeed": 9.5,
-        "recordedAt": "2024-02-24T09:00:00Z"
       }
     ],
     "2": [

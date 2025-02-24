@@ -11,7 +11,7 @@ function App() {
         {/* Lista de estaciones */}
         <Route path="/" element={<StationList />} />
         {/* Detalle de una estación */}
-        <Route path="/station/:id" element={<StationDetail />} />
+        <Route path="/weather/:id" element={<StationDetail />} />
       </Routes>
 
   );
