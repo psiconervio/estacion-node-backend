@@ -1,17 +1,25 @@
-// src/components/Weather/WeatherCard.jsx
 import React from "react";
 import WeatherVideo from "./WeatherVideo";
 import WeatherStats from "./WeatherStats";
 import Uv from "../Uv/Uv";
 
-const WeatherCard = ({ esp32Data, weatherData, uvData }) => {
-  // Controlamos si faltan datos
-  if (!esp32Data || !weatherData) {
-    return <div>Cargando clima...</div>;
-  }
+const WeatherCard = ({ esp32Data = {}, weatherData = {}, uvData = {} }) => {
+  // Desestructuramos los datos con valores predeterminados
+  const {
+    main = {},
+    weather = [],
+    wind = {},
+    clouds = {},
+    visibility = "No disponible",
+  } = weatherData;
 
-  // Ejemplo de uso de weatherData
-  const { main, weather, wind, clouds, visibility } = weatherData;
+  // Control de datos faltantes
+  const temperature = esp32Data.temperature || "No disponible";
+  const humidity = esp32Data.humidity || "No disponible";
+  const anemometro = esp32Data.anemometro || "No disponible";
+  const veleta = esp32Data.veleta || "No disponible";
+  const pluviometro = esp32Data.pluviometro || "No disponible";
+  const uvValue = uvData?.result?.ozone || "No disponible";
 
   return (
     <div style={{ marginTop: "20px", border: "1px solid #eee", padding: "15px" }}>
@@ -19,14 +27,14 @@ const WeatherCard = ({ esp32Data, weatherData, uvData }) => {
       <WeatherVideo videoSrc="/videos/blue_sky.mp4" />
 
       <WeatherStats
-        temperature={esp32Data.temperature}
-        humidity={esp32Data.humidity}
-        anemometro={esp32Data.anemometro}
-        veleta={esp32Data.veleta}
-        pluviometro={esp32Data.pluviometro}
-        uvValue={uvData?.result?.ozone}
-        pressure={main?.pressure}
-        clouds={clouds?.all}
+        temperature={temperature}
+        humidity={humidity}
+        anemometro={anemometro}
+        veleta={veleta}
+        pluviometro={pluviometro}
+        uvValue={uvValue}
+        pressure={main.pressure || "No disponible"}
+        clouds={clouds.all || "No disponible"}
         visibility={visibility}
       />
 
@@ -38,6 +46,49 @@ const WeatherCard = ({ esp32Data, weatherData, uvData }) => {
 };
 
 export default WeatherCard;
+// // src/components/Weather/WeatherCard.jsx
+// import React from "react";
+// import WeatherVideo from "./WeatherVideo";
+// import WeatherStats from "./WeatherStats";
+// import Uv from "../Uv/Uv";
+
+// const WeatherCard = ({ esp32Data, weatherData, uvData }) => {
+//   // Controlamos si faltan datos
+//   console.log("esp32Data:", esp32Data);
+// console.log("weatherData:", weatherData);
+// console.log("uvData:", uvData);
+//   if (!esp32Data || !weatherData) {
+//     return <div>Cargando clima...</div>;
+//   }
+
+//   // Ejemplo de uso de weatherData
+//   const { main, weather, wind, clouds, visibility } = weatherData;
+
+//   return (
+//     <div style={{ marginTop: "20px", border: "1px solid #eee", padding: "15px" }}>
+//       <h2>Clima Actual</h2>
+//       <WeatherVideo videoSrc="/videos/blue_sky.mp4" />
+
+//       <WeatherStats
+//         temperature={esp32Data.temperature}
+//         humidity={esp32Data.humidity}
+//         anemometro={esp32Data.anemometro}
+//         veleta={esp32Data.veleta}
+//         pluviometro={esp32Data.pluviometro}
+//         uvValue={uvData?.result?.ozone}
+//         pressure={main?.pressure}
+//         clouds={clouds?.all}
+//         visibility={visibility}
+//       />
+
+//       <div style={{ marginTop: "10px" }}>
+//         <Uv />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default WeatherCard;
 
 // // src/components/Weather/WeatherCard.jsx
 // import React from 'react';
