@@ -16,3 +16,4 @@ y despues enviarlas a el enpoint api/weather/:id indicado con el cuerpo:
   "windSpeed": 10.2
 }
 
+CREAR LOS CRONJOBS DE DIA SEMANA MES CON LAS REFERENCIAS DE LOS CONTROLADORES ANTERIORES

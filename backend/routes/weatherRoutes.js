@@ -4,11 +4,11 @@ import {
   getWeatherByStation,
   addWeatherData,
 } from "../controllers/weatherController.js";
-
+import { validateWeatherData } from "../middlewares/validateWeatherData.js";
 const router = express.Router();
 
 // Rutas para datos meteorológicos
 router.get("/:stationId", getWeatherByStation);
-router.post("/:stationId", addWeatherData);
+router.post("/:stationId",validateWeatherData, addWeatherData);
 
 export default router;

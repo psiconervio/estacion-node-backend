@@ -1,6 +1,8 @@
 // src/controllers/weatherController.js
 // import prisma from "../prisma.js";
 import prisma from "../config/db.js";
+import moment from "moment-timezone";
+
 
 /**
  * GET /api/weather/:stationId
@@ -20,11 +22,18 @@ export const getWeatherByStation = async (req, res) => {
     res.status(500).json({ error: "Error al obtener datos de clima" });
   }
 };
-
 /**
- * POST /api/weather/:stationId
- * Recibe nuevos datos meteorológicos de la estación
+ * Devuelve la hora local de Argentina como un objeto Date
  */
+function getArgentinaDate() {
+  // Esto obtiene la fecha/hora formateada en el huso horario de Argentina
+  const dateArgString = new Date().toLocaleString("en-US", {
+    timeZone: "America/Argentina/Buenos_Aires",
+  });
+  // Lo convertimos a objeto Date (almacena el tiempo local)
+  return new Date(dateArgString);
+}
+
 export const addWeatherData = async (req, res) => {
   const { stationId } = req.params;
   const { temperature, humidity, anemometro, pluviometro, veleta } = req.body;
@@ -42,15 +51,45 @@ export const addWeatherData = async (req, res) => {
         anemometro,
         pluviometro,
         veleta,
-        recordedAt: new Date(),
+        // Guardamos la fecha local de Argentina
       },
     });
-    res.status(201).json(newRecord);
+    return res.status(201).json(newRecord);
   } catch (error) {
     console.error("Error al guardar datos de clima:", error);
-    res.status(500).json({ error: "Error al guardar datos de clima" });
+    return res.status(500).json({ error: "Error al guardar datos de clima" });
   }
 };
+/**
+ * POST /api/weather/:stationId
+ * Recibe nuevos datos meteorológicos de la estación
+ */
+// export const addWeatherData = async (req, res) => {
+//   const { stationId } = req.params;
+//   const { temperature, humidity, anemometro, pluviometro, veleta } = req.body;
+
+//   if (temperature == null || humidity == null || anemometro == null) {
+//     return res.status(400).json({ error: "Datos incompletos" });
+//   }
+
+//   try {
+//     const newRecord = await prisma.weatherRecord.create({
+//       data: {
+//         stationId: Number(stationId),
+//         temperature,
+//         humidity,
+//         anemometro,
+//         pluviometro,
+//         veleta,
+//         recordedAt: new Date(),
+//       },
+//     });
+//     res.status(201).json(newRecord);
+//   } catch (error) {
+//     console.error("Error al guardar datos de clima:", error);
+//     res.status(500).json({ error: "Error al guardar datos de clima" });
+//   }
+// };
 
 /**
  * EJEMPLO: Cálculo de promedios diarios (lógica orientativa)

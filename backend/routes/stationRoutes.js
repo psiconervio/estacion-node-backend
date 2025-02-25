@@ -5,12 +5,13 @@ import {
   getStationById,
   createStation,
 } from "../controllers/stationController.js";
+import { validateStation } from "../middlewares/validateStation.js";
 
 const router = express.Router();
 
 // Rutas para estaciones
 router.get("/", getStations);
 router.get("/:id", getStationById);
-router.post("/", createStation);
+router.post("/",validateStation, createStation);
 
 export default router;

@@ -16,7 +16,7 @@ model Station {
   latitude        Float?
   longitude       Float?
   description     String?
-  createdAt       DateTime         @default(now())
+  createdAt       DateTime   @default(dbgenerated("CURRENT_TIMESTAMP AT TIME ZONE 'America/Argentina/Buenos_Aires'"))
   // Relación inversa a WeatherRecord
   weatherRecords  WeatherRecord[]
   // Relación inversa a DailyAverage, WeeklyAverage, MonthlyAverage
@@ -34,7 +34,7 @@ model WeatherRecord {
   anemometro  Float?
   veleta      String
   pluviometro Float
-  recordedAt  DateTime @default(now())
+  recordedAt  DateTime @default(dbgenerated("CURRENT_TIMESTAMP AT TIME ZONE 'America/Argentina/Buenos_Aires'"))
 }
 
 model DailyAverage {
@@ -47,7 +47,7 @@ model DailyAverage {
   averageAnemometro Float
   averageVeleta     String
   averagePluviomero Float
-  createdAt         DateTime @default(now())
+  createdAt         DateTime @default(dbgenerated("CURRENT_TIMESTAMP AT TIME ZONE 'America/Argentina/Buenos_Aires'"))
 }
 
 model WeeklyAverage {
@@ -61,7 +61,7 @@ model WeeklyAverage {
   averageAnemometro Float
   averageVeleta     String
   averagePluviomero Float
-  createdAt         DateTime @default(now())
+  createdAt         DateTime @default(dbgenerated("CURRENT_TIMESTAMP AT TIME ZONE 'America/Argentina/Buenos_Aires'"))
 }
 
 model MonthlyAverage {
@@ -75,7 +75,7 @@ model MonthlyAverage {
   averageAnemometro Float
   averageVeleta     String
   averagePluviomero Float
-  createdAt         DateTime @default(now())
+  createdAt         DateTime @default(dbgenerated("CURRENT_TIMESTAMP AT TIME ZONE 'America/Argentina/Buenos_Aires'"))
 }
 
 // model User {
