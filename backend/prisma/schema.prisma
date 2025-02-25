@@ -3,31 +3,144 @@
 generator client {
   provider = "prisma-client-js"
 }
+
 // BASEDEDATOSPOSTGRESS
 datasource db {
-  provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL")
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  username  String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model Station {
+  id              Int              @id @default(autoincrement())
+  name            String
+  latitude        Float?
+  longitude       Float?
+  description     String?
+  createdAt       DateTime         @default(now())
+  // Relación inversa a WeatherRecord
+  weatherRecords  WeatherRecord[]
+  // Relación inversa a DailyAverage, WeeklyAverage, MonthlyAverage
+  dailyAverages   DailyAverage[]
+  weeklyAverages  WeeklyAverage[]
+  monthlyAverages MonthlyAverage[]
 }
 
-model esp3201TableRecord {
-  board       String?
-  temperature String?
-  humidity    String?
-  veleta      String?
-  anemometro  String?
-  pluviometro String?
-  createdAt   DateTime @default(now())
+model WeatherRecord {
   id          Int      @id @default(autoincrement())
+  stationId   Int
+  station     Station  @relation(fields: [stationId], references: [id])
+  temperature Float
+  humidity    Float
+  anemometro  Float?
+  veleta      String
+  pluviometro Float
+  recordedAt  DateTime @default(now())
 }
+
+model DailyAverage {
+  id                Int      @id @default(autoincrement())
+  stationId         Int
+  station           Station  @relation(fields: [stationId], references: [id])
+  date              DateTime
+  averageTemp       Float
+  averageHumidity   Float
+  averageAnemometro Float
+  averageVeleta     String
+  averagePluviomero Float
+  createdAt         DateTime @default(now())
+}
+
+model WeeklyAverage {
+  id                Int      @id @default(autoincrement())
+  stationId         Int
+  station           Station  @relation(fields: [stationId], references: [id])
+  year              Int
+  week              Int
+  averageTemp       Float
+  averageHumidity   Float
+  averageAnemometro Float
+  averageVeleta     String
+  averagePluviomero Float
+  createdAt         DateTime @default(now())
+}
+
+model MonthlyAverage {
+  id                Int      @id @default(autoincrement())
+  stationId         Int
+  station           Station  @relation(fields: [stationId], references: [id])
+  year              Int
+  month             Int
+  averageTemp       Float
+  averageHumidity   Float
+  averageAnemometro Float
+  averageVeleta     String
+  averagePluviomero Float
+  createdAt         DateTime @default(now())
+}
+
+// model User {
+//   id        Int      @id @default(autoincrement())
+//   email     String   @unique
+//   username  String   @unique
+//   password  String
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+// }
+// //CODIGO POSTGRESS
+// model esp3201TableRecord {
+//   board       String?
+//   temperature String?
+//   humidity    String?
+//   veleta      String?
+//   anemometro  String?
+//   pluviometro String?
+//   createdAt   DateTime @default(now())
+//   id          Int      @id @default(autoincrement())
+// }
+// model esp3201TableUpdatedia {
+//   id              Int        @default(autoincrement())
+//   fecha           DateTime  @unique
+//   max_temp        Float?
+//   min_temp        Float?
+//   max_humidity    Float?
+//   min_humidity    Float?
+//   moda_veleta     String?
+//   avg_anemometro  Float?
+//   sum_pluviometro Float?
+// }
+
+// model Esp3201TableRecordDiaMensual {
+//   id               Int     @id @default(autoincrement())
+//   mes              String
+//   avg_max_temp     Float?
+//   avg_min_temp     Float?
+//   avg_max_humidity Float?
+//   avg_min_humidity Float?
+//   moda_veleta      String?
+//   avg_anemometro   Float?
+//   sum_pluviometro  Float?
+// }
+// model Esp3201TableRecordDiaSemanal {
+//   id              Int      @id @default(autoincrement())
+//   semana          String
+//   start_date      DateTime
+//   end_date        DateTime
+//   max_temp        Float?
+//   min_temp        Float?
+//   max_humidity    Float?
+//   min_humidity    Float?
+//   moda_veleta     String?
+//   avg_anemometro  Float?
+//   sum_pluviometro Float?
+// }
+// model Product {
+//   id        Int      @id @default(autoincrement())
+//   name      String
+//   description String?
+//   price     Float?
+//   createdAt DateTime @default(now())
+//   image     String?
+// }
 //modelo tabla base de datos mysql
 // model esp3201TableUpdatedia {
 //   id              Int        @default(autoincrement())
@@ -41,51 +154,6 @@ model esp3201TableRecord {
 //   avg_anemometro  Float?
 //   sum_pluviometro Float?
 // }
-//CODIGO POSTGRESS
-model esp3201TableUpdatedia {
-  id              Int        @default(autoincrement())
-  fecha           DateTime  @unique
-  max_temp        Float?
-  min_temp        Float?
-  max_humidity    Float?
-  min_humidity    Float?
-  moda_veleta     String?
-  avg_anemometro  Float?
-  sum_pluviometro Float?
-}
-
-model Esp3201TableRecordDiaMensual {
-  id               Int     @id @default(autoincrement())
-  mes              String
-  avg_max_temp     Float?
-  avg_min_temp     Float?
-  avg_max_humidity Float?
-  avg_min_humidity Float?
-  moda_veleta      String?
-  avg_anemometro   Float?
-  sum_pluviometro  Float?
-}
-model Esp3201TableRecordDiaSemanal {
-  id              Int      @id @default(autoincrement())
-  semana          String
-  start_date      DateTime
-  end_date        DateTime
-  max_temp        Float?
-  min_temp        Float?
-  max_humidity    Float?
-  min_humidity    Float?
-  moda_veleta     String?
-  avg_anemometro  Float?
-  sum_pluviometro Float?
-}
-model Product {
-  id        Int      @id @default(autoincrement())
-  name      String
-  description String?
-  price     Float?
-  createdAt DateTime @default(now())
-  image     String?
-}
 //otros modelos
 // model esp3201TableUpdatedia {
 //   id              Int      @id @default(autoincrement())
