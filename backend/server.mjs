@@ -5,9 +5,7 @@ import recordRoutes from './routes/recordRoutes.js';
 import stationRoutes from "./routes/stationRoutes.js";
 import weatherRoutes from "./routes/weatherRoutes.js";
 
-
 dotenv.config();
-
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -16,13 +14,10 @@ app.use(express.json());
 app.use(cors());
 //CONFIGURACION ESTACION DE CLIMA
 // mongoose.connect("mongodb://localhost/weatherDB", { useNewUrlParser: true, useUnifiedTopology: true });
-
 // app.use("/api/stations", stationRoutes);
 app.use("/api/weather", weatherRoutes);
 //HASTA ACA CONFIGURACION ESTACION DE CLIMA
-
 app.use("/api/stations", stationRoutes);
-
 // Rutas
 app.use('/api/records', recordRoutes);
 // Rutas

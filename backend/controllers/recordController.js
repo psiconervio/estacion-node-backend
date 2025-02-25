@@ -19,7 +19,7 @@ export const postRecord = async (req, res) => {
     }).format(now);
 
     const newData = await createRecord({
-      id: data.id,
+      // id: data.id,
       board: data.board || 'default_board',
       temperature: data.temperature || '404',
       humidity: data.humidity || '404',

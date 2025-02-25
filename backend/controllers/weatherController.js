@@ -4,11 +4,20 @@ import fs from "fs";
 const weatherData = JSON.parse(fs.readFileSync("data/weather.json", "utf-8"));
 
 // Obtener datos meteorológicos de una estación
+// Obtener datos meteorológicos de una estación
 export const getWeatherByStation = (req, res) => {
   const stationId = req.params.stationId;
-  const data = weatherData[stationId] || [];
-  res.json(data);
-};
+  const data = weatherData[stationId];
+  if (data) {
+    res.json(data);
+  } else {
+    res.status(404).json({ error: 'Estación no encontrada' });
+  }}
+// export const getWeatherByStation = (req, res) => {
+//   const stationId = req.params.stationId;
+//   const data = weatherData[stationId] || [];
+//   res.json(data);
+// };
 
 // import { WeatherData } from "../models/WeatherData.js";
 

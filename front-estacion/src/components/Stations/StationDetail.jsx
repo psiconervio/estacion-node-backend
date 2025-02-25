@@ -26,9 +26,10 @@ const StationDetail = () => {
   // Fetch para obtener los datos del clima
   useEffect(() => {
     fetchWeatherById(id)
-      .then((data) => {
-        setWeather(data); // Guardamos los datos del clima en el estado `weather`
+      .then((clima) => {
+        setWeather(clima); // Guardamos los datos del clima en el estado `weather`
         setWeatherLoading(false);
+        console.log("este es mi clima", clima);
       })
       .catch((err) => {
         console.error("Error fetching weather data:", err);
@@ -54,7 +55,7 @@ const StationDetail = () => {
   // Desestructuración segura de la estación
   const { location = {}, name, esp32Data, uvData } = station;
   const { latitude = "Sin latitud", longitude = "Sin longitud" } = location;
-console.log(esp32Data,weather,uvData)
+// console.log(esp32Data,weather,uvData)
   return (
     <div style={{ padding: "20px" }}>
       <Link to="/">← Volver a la lista</Link>
@@ -75,6 +76,8 @@ console.log(esp32Data,weather,uvData)
 };
 
 export default StationDetail;
+
+
 // import React, { useEffect, useState } from "react";
 // import { useParams, Link } from "react-router-dom";
 // import { fetchStationById, fetchWeatherById } from "../../services/api";
