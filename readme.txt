@@ -19,3 +19,6 @@ y despues enviarlas a el enpoint api/weather/:id indicado con el cuerpo:
 CREAR LOS CRONJOBS DE DIA SEMANA MES CON LAS REFERENCIAS DE LOS CONTROLADORES ANTERIORES
 
 implementado hasta ahora el cronjobs de dia, probar!
+
+
+crear un middleware que envie una notificacion que tal estacion esta tratando de enviar datos erroneos
