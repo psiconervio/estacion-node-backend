@@ -6,11 +6,11 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 8080,
-    preview: {
-      port: 8080,
-      allowedHosts: ['estacion-node-backend.onrender.com']
-    }
-  }
+  },
+  preview: {
+    port: 8080,
+    allowedHosts: ['estacion-node-backend.onrender.com'], // Mover aquí
+  },
 });
 
 // import { defineConfig } from 'vite';
