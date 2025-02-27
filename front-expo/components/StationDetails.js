@@ -138,6 +138,6 @@ export default function StationDetails({ station, onClose, theme }) {
     backgroundGradientTo: theme.card,
     decimalPlaces: 1,
     color: (opacity = 1) => `rgba(${darkMode ? '255, 255, 255' : '0, 0, 0'}, ${opacity})`,
-    labelColor: (opacity = 1) => `rgba(${darkMode ? '255, 255, <boltArtifact id="expo-weather-stations-app" title="Weather Stations Mobile App with Expo">
+    // labelColor: (opacity = 1) => `rgba(${darkMode ? '255, 255, <boltArtifact id="expo-weather-stations-app" title="Weather Stations Mobile App with Expo">
   }
 }
