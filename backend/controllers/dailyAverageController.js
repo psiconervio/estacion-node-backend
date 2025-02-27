@@ -1,5 +1,5 @@
 // controllers/dailyAverageController.js
-import prisma from "../prisma.js";
+import prisma from "../config/db";
 
 /**
  * Cron job / script para calcular los datos diarios (máximos, mínimos, etc.)
