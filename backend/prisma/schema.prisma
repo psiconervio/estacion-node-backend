@@ -32,8 +32,8 @@ model WeatherRecord {
   temperature Float
   humidity    Float
   anemometro  Float?
-  veleta      String
-  pluviometro Float
+  veleta      String?
+  pluviometro Float?
   recordedAt  DateTime @default(dbgenerated("CURRENT_TIMESTAMP AT TIME ZONE 'America/Argentina/Buenos_Aires'"))
 }
 

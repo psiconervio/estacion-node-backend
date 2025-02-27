@@ -9,6 +9,8 @@ const router = express.Router();
 
 // Rutas para datos meteorológicos
 router.get("/:stationId", getWeatherByStation);
-router.post("/:stationId",validateWeatherData, addWeatherData);
+router.post("/:stationId",
+  // validateWeatherData,
+   addWeatherData);
 
 export default router;

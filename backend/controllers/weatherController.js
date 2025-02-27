@@ -38,9 +38,9 @@ export const addWeatherData = async (req, res) => {
   const { stationId } = req.params;
   const { temperature, humidity, anemometro, pluviometro, veleta } = req.body;
 
-  if (temperature == null || humidity == null || anemometro == null) {
-    return res.status(400).json({ error: "Datos incompletos" });
-  }
+  // if (temperature == null || humidity == null || anemometro == null) {
+  //   return res.status(400).json({ error: "Datos incompletos" });
+  // }
 
   try {
     const newRecord = await prisma.weatherRecord.create({
