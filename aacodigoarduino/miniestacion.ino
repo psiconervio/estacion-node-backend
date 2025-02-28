@@ -1,5 +1,8 @@
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
+#include <WiFi.h> // Librería para el wifi.
+#include <HTTPClient.h>
+#include <Arduino_JSON.h>
 
 // Definir el pin del DHT11
 #define DHTPIN 15  // Cambia este número según el pin al que conectaste el sensor
