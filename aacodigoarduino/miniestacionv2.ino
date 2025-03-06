@@ -12,6 +12,7 @@ DHT dht(DHTPIN, DHTTYPE);
 // Configuración de WiFi
 const char* ssid = "PB02";
 const char* password = "12345678";
+//Incrementar ultimo numero para agregar la estacion con el mismo numero (id) 
 const char* serverUrl = "https://estacion-node-backend-1.onrender.com/api/weather/1";  // URL del endpoint
 
 void setup() {
