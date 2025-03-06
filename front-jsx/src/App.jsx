@@ -11,6 +11,12 @@ import {
 } from "lucide-react";
 import StationCard from "./components/StationCard.jsx";
 import StationDetails from "./components/StationDetails.jsx";
+import  useStationData  from "./hooks/useStationsData";
+import  fetchAndTransformStationsData  from "./libs/reestructuracion";
+import  reestructuracionone  from "./libs/reestructuracion1";
+import  useWeatherStation  from "./hooks/useWeatherStation";
+
+console.log(reestructuracionone,fetchAndTransformStationsData,useWeatherStation,useStationData);
 
 const mockStations = [
   {
