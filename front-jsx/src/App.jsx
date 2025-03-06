@@ -435,7 +435,7 @@ const mockStations = [
 ];
 
 function App() {
-fetchAndTransformStationsData();
+// fetchAndTransformStationsData();
 
   const [searchTerm, setSearchTerm] = useState("");
   const [stations] = useState(mockStations);
