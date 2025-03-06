@@ -66,37 +66,37 @@ export default function StationCard({ station, onViewDetails }) {
           </div>
         </div>
         
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <Gauge className="w-5 h-5 text-blue-500 dark:text-blue-400 mr-2" />
           <div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Presión</p>
             <p className="font-semibold text-gray-900 dark:text-white">{station.readings.pressure} hPa</p>
           </div>
-        </div>
+        </div> */}
         
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <Wind className="w-5 h-5 text-blue-500 dark:text-blue-400 mr-2" />
           <div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Velocidad del Viento</p>
             <p className="font-semibold text-gray-900 dark:text-white">{station.readings.windSpeed} km/h</p>
           </div>
-        </div>
+        </div> */}
         
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <Navigation className="w-5 h-5 text-blue-500 dark:text-blue-400 mr-2" />
           <div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Dirección del Viento</p>
             <p className="font-semibold text-gray-900 dark:text-white">{station.readings.windDirection}</p>
           </div>
-        </div>
+        </div> */}
         
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <CloudRain className="w-5 h-5 text-blue-500 dark:text-blue-400 mr-2" />
           <div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Precipitación</p>
             <p className="font-semibold text-gray-900 dark:text-white">{station.readings.precipitation} mm</p>
           </div>
-        </div>
+        </div> */}
       </div>
       
       <div className="flex items-center justify-between text-sm">
