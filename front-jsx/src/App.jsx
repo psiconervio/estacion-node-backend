@@ -12,9 +12,15 @@ import {
 import StationCard from "./components/StationCard.jsx";
 import StationDetails from "./components/StationDetails.jsx";
 import fetchAndTransformStationsData from "./libs/reestructuracion";
+import { Thermometer, Droplets, Menu, X } from 'lucide-react';
+import WeatherMap from './components/WeatherMap';
+import { weatherStations } from './data/stations';
 
 function App() {
   // Usamos un estado inicial vacío para las estaciones
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const [mapType, setMapType] = useState('temperature');
   const [stations, setStations] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStation, setSelectedStation] = useState(null);
@@ -191,6 +197,84 @@ function App() {
           />
         )}
       </main>
+      <div className="p-4 md:p-8 max-w-6xl mx-auto">
+              {/* Main Content */}
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+          {/* Map Controls */}
+          <div className="p-4 border-b">
+            <div className="flex gap-2 md:gap-4">
+              <button
+                onClick={() => setMapType('temperature')}
+                className={`flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm md:text-base ${
+                  mapType === 'temperature'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                <Thermometer size={16} className="md:w-5 md:h-5" />
+                <span>Temperatura</span>
+              </button>
+              <button
+                onClick={() => setMapType('humidity')}
+                className={`flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm md:text-base ${
+                  mapType === 'humidity'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                <Droplets size={16} className="md:w-5 md:h-5" />
+                <span>Humedad</span>
+              </button>
+            </div>
+          </div>
+
+          <WeatherMap stations={weatherStations} mapType={mapType} />
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`
+          fixed inset-0 bg-gray-800 bg-opacity-50 transition-opacity z-40 md:hidden
+          ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}
+        `} onClick={() => setIsMenuOpen(false)}>
+          <div className={`
+            fixed inset-y-0 right-0 max-w-xs w-full bg-white shadow-xl transform transition-transform
+            ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}
+          `} onClick={e => e.stopPropagation()}>
+            <div className="p-4 space-y-4">
+              <h2 className="text-lg font-semibold mb-4">Estaciones</h2>
+              {weatherStations.map((station) => (
+                <div
+                  key={station.id}
+                  className="bg-gray-50 rounded-lg p-3 shadow-sm"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-semibold">{station.name}</h3>
+                    <span
+                      className={`inline-block w-2 h-2 rounded-full ${
+                        station.status === 'online'
+                          ? 'bg-green-500'
+                          : station.status === 'offline'
+                          ? 'bg-red-500'
+                          : 'bg-yellow-500'
+                      }`}
+                    />
+                  </div>
+                  <div className="space-y-1 text-sm">
+                    <div className="flex items-center gap-2">
+                      <Thermometer size={14} className="text-red-500" />
+                      <span>{station.temperature}°C</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Droplets size={14} className="text-blue-500" />
+                      <span>{station.humidity}%</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        </div>
     </div>
   );
 }

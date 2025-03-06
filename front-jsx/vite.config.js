@@ -11,4 +11,7 @@ export default defineConfig({
     port: 8080,
     allowedHosts: ['estacion-node-backend.onrender.com'], // Mover aquí
   },
+  optimizeDeps: {
+    exclude: ['lucide-react'],
+  },
 });
