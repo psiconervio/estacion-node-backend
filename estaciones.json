@@ -1,0 +1,590 @@
+[
+    {
+      "id": "1",
+      "name": "Estación Sudeste",
+      "location": "Ubicada en zona céntrica",
+      "status": "online",
+      "lastUpdate": "2025-02-28T20:19:30.150Z",
+      "coordinates": {
+        "latitude": -34.6,
+        "longitude": -58.3
+      },
+      "readings": {
+        "temperature": 21.60000038146973,
+        "humidity": 60,
+        "pressure": 1013,
+        "windSpeed": null,
+        "windDirection": null,
+        "precipitation": null
+      },
+      "history": [
+        {
+          "timestamp": "2025-03-07T02:23:50.371Z",
+          "temperature": 22.4457236497022,
+          "humidity": 64.51095854445131
+        },
+        {
+          "timestamp": "2025-03-07T01:23:50.371Z",
+          "temperature": 22.667387487449574,
+          "humidity": 61.24055345035417
+        },
+        {
+          "timestamp": "2025-03-07T00:23:50.371Z",
+          "temperature": 22.7305906187521,
+          "humidity": 61.094602698508226
+        },
+        {
+          "timestamp": "2025-03-06T23:23:50.371Z",
+          "temperature": 22.162705869162625,
+          "humidity": 62.73830949385452
+        },
+        {
+          "timestamp": "2025-03-06T22:23:50.371Z",
+          "temperature": 22.022635685445977,
+          "humidity": 61.63430447113579
+        },
+        {
+          "timestamp": "2025-03-06T21:23:50.371Z",
+          "temperature": 23.268229171857367,
+          "humidity": 60.66043356424014
+        },
+        {
+          "timestamp": "2025-03-06T20:23:50.371Z",
+          "temperature": 23.239317928956446,
+          "humidity": 64.43747524921375
+        },
+        {
+          "timestamp": "2025-03-06T19:23:50.371Z",
+          "temperature": 23.129911885785802,
+          "humidity": 63.900898637648716
+        },
+        {
+          "timestamp": "2025-03-06T18:23:50.371Z",
+          "temperature": 22.746467730796372,
+          "humidity": 61.80871846530623
+        },
+        {
+          "timestamp": "2025-03-06T17:23:50.371Z",
+          "temperature": 23.22228288791255,
+          "humidity": 62.98348012377188
+        },
+        {
+          "timestamp": "2025-03-06T16:23:50.371Z",
+          "temperature": 22.310381186696983,
+          "humidity": 64.92516234058398
+        },
+        {
+          "timestamp": "2025-03-06T15:23:50.371Z",
+          "temperature": 22.130808328478526,
+          "humidity": 60.49061158384806
+        },
+        {
+          "timestamp": "2025-03-06T14:23:50.371Z",
+          "temperature": 21.919894801559753,
+          "humidity": 64.43955768513621
+        },
+        {
+          "timestamp": "2025-03-06T13:23:50.371Z",
+          "temperature": 21.90335128959921,
+          "humidity": 60.018184048714616
+        },
+        {
+          "timestamp": "2025-03-06T12:23:50.371Z",
+          "temperature": 22.547684043150273,
+          "humidity": 63.62367436329693
+        },
+        {
+          "timestamp": "2025-03-06T11:23:50.371Z",
+          "temperature": 22.351612717790864,
+          "humidity": 61.66736754794346
+        },
+        {
+          "timestamp": "2025-03-06T10:23:50.371Z",
+          "temperature": 22.63667099350945,
+          "humidity": 63.429773744335606
+        },
+        {
+          "timestamp": "2025-03-06T09:23:50.371Z",
+          "temperature": 22.270515798562926,
+          "humidity": 60.56713992555306
+        },
+        {
+          "timestamp": "2025-03-06T08:23:50.371Z",
+          "temperature": 21.623713087129772,
+          "humidity": 64.1817496905748
+        },
+        {
+          "timestamp": "2025-03-06T07:23:50.371Z",
+          "temperature": 21.77483481489822,
+          "humidity": 61.98952057783193
+        },
+        {
+          "timestamp": "2025-03-06T06:23:50.371Z",
+          "temperature": 22.9225766313899,
+          "humidity": 61.86365638855995
+        },
+        {
+          "timestamp": "2025-03-06T05:23:50.371Z",
+          "temperature": 21.635934817344502,
+          "humidity": 62.68276561671458
+        },
+        {
+          "timestamp": "2025-03-06T04:23:50.371Z",
+          "temperature": 22.384449461163534,
+          "humidity": 63.082494998541776
+        },
+        {
+          "timestamp": "2025-03-06T03:23:50.371Z",
+          "temperature": 22.91923888158092,
+          "humidity": 64.1192894612907
+        }
+      ],
+      "alerts": [],
+      "maintenance": {
+        "lastCheck": "2025-02-20T02:23:50.371Z",
+        "nextScheduled": "2025-03-22T02:23:50.371Z",
+        "status": "Operativa"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Estación Norte",
+      "location": "Ubicada en zona céntrica",
+      "status": "offline",
+      "lastUpdate": "2025-03-07T02:23:50.371Z",
+      "coordinates": {
+        "latitude": -34.6,
+        "longitude": -58.3
+      },
+      "readings": {
+        "temperature": null,
+        "humidity": null,
+        "pressure": 1013,
+        "windSpeed": null,
+        "windDirection": null,
+        "precipitation": null
+      },
+      "history": [
+        {
+          "timestamp": "2025-03-07T02:23:50.371Z",
+          "temperature": 21.242732738281,
+          "humidity": 52.35021246056102
+        },
+        {
+          "timestamp": "2025-03-07T01:23:50.371Z",
+          "temperature": 21.000928259787326,
+          "humidity": 50.64023068302969
+        },
+        {
+          "timestamp": "2025-03-07T00:23:50.371Z",
+          "temperature": 21.478488234710326,
+          "humidity": 53.562470180031276
+        },
+        {
+          "timestamp": "2025-03-06T23:23:50.371Z",
+          "temperature": 20.898782842160657,
+          "humidity": 52.445994448654126
+        },
+        {
+          "timestamp": "2025-03-06T22:23:50.371Z",
+          "temperature": 21.665376628852687,
+          "humidity": 50.09966354130681
+        },
+        {
+          "timestamp": "2025-03-06T21:23:50.371Z",
+          "temperature": 21.322023504447202,
+          "humidity": 54.06632452286578
+        },
+        {
+          "timestamp": "2025-03-06T20:23:50.371Z",
+          "temperature": 21.955412748506145,
+          "humidity": 53.8495593876014
+        },
+        {
+          "timestamp": "2025-03-06T19:23:50.371Z",
+          "temperature": 21.40064746398549,
+          "humidity": 52.46143064272996
+        },
+        {
+          "timestamp": "2025-03-06T18:23:50.371Z",
+          "temperature": 20.647469192445893,
+          "humidity": 50.00406096881419
+        },
+        {
+          "timestamp": "2025-03-06T17:23:50.371Z",
+          "temperature": 20.964685717304807,
+          "humidity": 50.19887712174229
+        },
+        {
+          "timestamp": "2025-03-06T16:23:50.371Z",
+          "temperature": 20.64891556125065,
+          "humidity": 50.91850963921533
+        },
+        {
+          "timestamp": "2025-03-06T15:23:50.371Z",
+          "temperature": 21.811572220093176,
+          "humidity": 50.58695306750125
+        },
+        {
+          "timestamp": "2025-03-06T14:23:50.371Z",
+          "temperature": 21.20744785981169,
+          "humidity": 53.01761276555109
+        },
+        {
+          "timestamp": "2025-03-06T13:23:50.371Z",
+          "temperature": 21.388060735211806,
+          "humidity": 51.70075743517096
+        },
+        {
+          "timestamp": "2025-03-06T12:23:50.371Z",
+          "temperature": 21.677979514438118,
+          "humidity": 50.38264547077274
+        },
+        {
+          "timestamp": "2025-03-06T11:23:50.371Z",
+          "temperature": 21.313101631868296,
+          "humidity": 51.198391632342926
+        },
+        {
+          "timestamp": "2025-03-06T10:23:50.371Z",
+          "temperature": 20.543286041131392,
+          "humidity": 50.575310228499646
+        },
+        {
+          "timestamp": "2025-03-06T09:23:50.371Z",
+          "temperature": 21.258296484073625,
+          "humidity": 51.33749185131779
+        },
+        {
+          "timestamp": "2025-03-06T08:23:50.371Z",
+          "temperature": 21.947457816637787,
+          "humidity": 54.52721140107115
+        },
+        {
+          "timestamp": "2025-03-06T07:23:50.371Z",
+          "temperature": 20.12631727629369,
+          "humidity": 52.19269188037559
+        },
+        {
+          "timestamp": "2025-03-06T06:23:50.371Z",
+          "temperature": 21.512868555068884,
+          "humidity": 53.71107820392469
+        },
+        {
+          "timestamp": "2025-03-06T05:23:50.371Z",
+          "temperature": 21.784286882523837,
+          "humidity": 54.81105069674475
+        },
+        {
+          "timestamp": "2025-03-06T04:23:50.371Z",
+          "temperature": 21.909677004676816,
+          "humidity": 52.825602634189316
+        },
+        {
+          "timestamp": "2025-03-06T03:23:50.371Z",
+          "temperature": 21.752195004941907,
+          "humidity": 51.46260871099784
+        }
+      ],
+      "alerts": [],
+      "maintenance": {
+        "lastCheck": "2025-02-20T02:23:50.371Z",
+        "nextScheduled": "2025-03-22T02:23:50.371Z",
+        "status": "Operativa"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Estación Sur",
+      "location": "Ubicada en zona céntrica",
+      "status": "offline",
+      "lastUpdate": "2025-03-07T02:23:50.371Z",
+      "coordinates": {
+        "latitude": -34.6,
+        "longitude": -58.3
+      },
+      "readings": {
+        "temperature": null,
+        "humidity": null,
+        "pressure": 1013,
+        "windSpeed": null,
+        "windDirection": null,
+        "precipitation": null
+      },
+      "history": [
+        {
+          "timestamp": "2025-03-07T02:23:50.371Z",
+          "temperature": 21.122882877591742,
+          "humidity": 52.95843083906931
+        },
+        {
+          "timestamp": "2025-03-07T01:23:50.371Z",
+          "temperature": 21.528741325658658,
+          "humidity": 54.1487994807401
+        },
+        {
+          "timestamp": "2025-03-07T00:23:50.371Z",
+          "temperature": 20.78697143820181,
+          "humidity": 54.530804360203405
+        },
+        {
+          "timestamp": "2025-03-06T23:23:50.371Z",
+          "temperature": 21.044412857788327,
+          "humidity": 54.61039695503298
+        },
+        {
+          "timestamp": "2025-03-06T22:23:50.371Z",
+          "temperature": 20.221938958196873,
+          "humidity": 52.43092033098878
+        },
+        {
+          "timestamp": "2025-03-06T21:23:50.371Z",
+          "temperature": 21.973532822457752,
+          "humidity": 51.27341732812603
+        },
+        {
+          "timestamp": "2025-03-06T20:23:50.371Z",
+          "temperature": 20.73343417077245,
+          "humidity": 50.67761256914594
+        },
+        {
+          "timestamp": "2025-03-06T19:23:50.371Z",
+          "temperature": 21.49215811648002,
+          "humidity": 54.877974627436686
+        },
+        {
+          "timestamp": "2025-03-06T18:23:50.371Z",
+          "temperature": 20.3993483671307,
+          "humidity": 51.78609345500733
+        },
+        {
+          "timestamp": "2025-03-06T17:23:50.371Z",
+          "temperature": 20.142709368996506,
+          "humidity": 52.56415116249687
+        },
+        {
+          "timestamp": "2025-03-06T16:23:50.371Z",
+          "temperature": 20.315838748013288,
+          "humidity": 52.770839424266256
+        },
+        {
+          "timestamp": "2025-03-06T15:23:50.371Z",
+          "temperature": 20.28506982494555,
+          "humidity": 54.02372086336283
+        },
+        {
+          "timestamp": "2025-03-06T14:23:50.371Z",
+          "temperature": 20.346633141978845,
+          "humidity": 53.008976858863996
+        },
+        {
+          "timestamp": "2025-03-06T13:23:50.371Z",
+          "temperature": 20.186278493633285,
+          "humidity": 50.689921785470204
+        },
+        {
+          "timestamp": "2025-03-06T12:23:50.371Z",
+          "temperature": 20.192117255247894,
+          "humidity": 53.50939842039011
+        },
+        {
+          "timestamp": "2025-03-06T11:23:50.371Z",
+          "temperature": 21.417640246804364,
+          "humidity": 52.50244272317349
+        },
+        {
+          "timestamp": "2025-03-06T10:23:50.371Z",
+          "temperature": 20.021755508721082,
+          "humidity": 51.01508241394427
+        },
+        {
+          "timestamp": "2025-03-06T09:23:50.371Z",
+          "temperature": 21.1295289114514,
+          "humidity": 50.27447204426931
+        },
+        {
+          "timestamp": "2025-03-06T08:23:50.371Z",
+          "temperature": 20.020840551890622,
+          "humidity": 50.37871487384599
+        },
+        {
+          "timestamp": "2025-03-06T07:23:50.371Z",
+          "temperature": 20.812416663583676,
+          "humidity": 51.57162376891438
+        },
+        {
+          "timestamp": "2025-03-06T06:23:50.371Z",
+          "temperature": 21.145535146039666,
+          "humidity": 51.83114923324124
+        },
+        {
+          "timestamp": "2025-03-06T05:23:50.371Z",
+          "temperature": 20.32479665330652,
+          "humidity": 51.830462910982874
+        },
+        {
+          "timestamp": "2025-03-06T04:23:50.371Z",
+          "temperature": 21.160310477658275,
+          "humidity": 54.0334546746281
+        },
+        {
+          "timestamp": "2025-03-06T03:23:50.371Z",
+          "temperature": 21.113404233483084,
+          "humidity": 50.24925070994474
+        }
+      ],
+      "alerts": [],
+      "maintenance": {
+        "lastCheck": "2025-02-20T02:23:50.371Z",
+        "nextScheduled": "2025-03-22T02:23:50.371Z",
+        "status": "Operativa"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Estación Este",
+      "location": "Ubicada en zona céntrica",
+      "status": "offline",
+      "lastUpdate": "2025-03-07T02:23:50.371Z",
+      "coordinates": {
+        "latitude": -34.6,
+        "longitude": -58.3
+      },
+      "readings": {
+        "temperature": null,
+        "humidity": null,
+        "pressure": 1013,
+        "windSpeed": null,
+        "windDirection": null,
+        "precipitation": null
+      },
+      "history": [
+        {
+          "timestamp": "2025-03-07T02:23:50.371Z",
+          "temperature": 20.216235781012543,
+          "humidity": 53.58851708664607
+        },
+        {
+          "timestamp": "2025-03-07T01:23:50.371Z",
+          "temperature": 21.42640664662344,
+          "humidity": 51.42346935767497
+        },
+        {
+          "timestamp": "2025-03-07T00:23:50.371Z",
+          "temperature": 20.509487091808936,
+          "humidity": 52.498435653361355
+        },
+        {
+          "timestamp": "2025-03-06T23:23:50.371Z",
+          "temperature": 20.747499795120063,
+          "humidity": 52.91036707647206
+        },
+        {
+          "timestamp": "2025-03-06T22:23:50.371Z",
+          "temperature": 20.686478761440384,
+          "humidity": 54.96041849056472
+        },
+        {
+          "timestamp": "2025-03-06T21:23:50.371Z",
+          "temperature": 21.8055485014187,
+          "humidity": 52.98825413478584
+        },
+        {
+          "timestamp": "2025-03-06T20:23:50.371Z",
+          "temperature": 20.145393235141718,
+          "humidity": 52.46600088693878
+        },
+        {
+          "timestamp": "2025-03-06T19:23:50.371Z",
+          "temperature": 21.21732710959274,
+          "humidity": 53.01152497446168
+        },
+        {
+          "timestamp": "2025-03-06T18:23:50.371Z",
+          "temperature": 21.667244155460914,
+          "humidity": 54.4431767895488
+        },
+        {
+          "timestamp": "2025-03-06T17:23:50.371Z",
+          "temperature": 21.893718902431377,
+          "humidity": 54.34703457992789
+        },
+        {
+          "timestamp": "2025-03-06T16:23:50.371Z",
+          "temperature": 21.318561200236577,
+          "humidity": 54.66007089431225
+        },
+        {
+          "timestamp": "2025-03-06T15:23:50.371Z",
+          "temperature": 20.48844038775115,
+          "humidity": 53.77355043115627
+        },
+        {
+          "timestamp": "2025-03-06T14:23:50.371Z",
+          "temperature": 21.91069079481672,
+          "humidity": 50.22980644921683
+        },
+        {
+          "timestamp": "2025-03-06T13:23:50.371Z",
+          "temperature": 20.85001696981179,
+          "humidity": 50.49405961823859
+        },
+        {
+          "timestamp": "2025-03-06T12:23:50.371Z",
+          "temperature": 21.08388066219875,
+          "humidity": 52.20577471679388
+        },
+        {
+          "timestamp": "2025-03-06T11:23:50.371Z",
+          "temperature": 20.559638915530236,
+          "humidity": 53.38257348744897
+        },
+        {
+          "timestamp": "2025-03-06T10:23:50.371Z",
+          "temperature": 21.784865870039187,
+          "humidity": 53.574447627804254
+        },
+        {
+          "timestamp": "2025-03-06T09:23:50.371Z",
+          "temperature": 21.897315175911263,
+          "humidity": 53.309897735440245
+        },
+        {
+          "timestamp": "2025-03-06T08:23:50.371Z",
+          "temperature": 21.451204987641127,
+          "humidity": 54.57645355467426
+        },
+        {
+          "timestamp": "2025-03-06T07:23:50.371Z",
+          "temperature": 21.177921240535827,
+          "humidity": 51.740768043589625
+        },
+        {
+          "timestamp": "2025-03-06T06:23:50.371Z",
+          "temperature": 21.623157501356218,
+          "humidity": 50.01073872306457
+        },
+        {
+          "timestamp": "2025-03-06T05:23:50.371Z",
+          "temperature": 21.985666082609114,
+          "humidity": 50.999759318283246
+        },
+        {
+          "timestamp": "2025-03-06T04:23:50.371Z",
+          "temperature": 20.8121432465793,
+          "humidity": 52.93934748212405
+        },
+        {
+          "timestamp": "2025-03-06T03:23:50.371Z",
+          "temperature": 21.531349617707697,
+          "humidity": 54.940336402658524
+        }
+      ],
+      "alerts": [],
+      "maintenance": {
+        "lastCheck": "2025-02-20T02:23:50.371Z",
+        "nextScheduled": "2025-03-22T02:23:50.371Z",
+        "status": "Operativa"
+      }
+    }
+  ]

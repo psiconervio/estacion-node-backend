@@ -44,3 +44,50 @@ export const weatherStations = [
     lastUpdate: '2025-03-06T15:41:44'
   }
 ];
+//estructura de la funcion reescruturarmapa
+// [
+//   {
+//       "id": "sudeste",
+//       "name": "Estación Sudeste",
+//       "location": "Ubicada en zona céntrica",
+//       "latitude": -34.6037,
+//       "longitude": -58.3816,
+//       "temperature": 21.6,
+//       "humidity": 60,
+//       "status": "online",
+//       "lastUpdate": "2025-02-28T20:19:30"
+//   },
+//   {
+//       "id": "norte",
+//       "name": "Estación Norte",
+//       "location": "Ubicada en zona céntrica",
+//       "latitude": -34.5875,
+//       "longitude": -58.3819,
+//       "temperature": 22.1,
+//       "humidity": 58,
+//       "status": "online",
+//       "lastUpdate": "2025-03-06T21:34:55"
+//   },
+//   {
+//       "id": "sur",
+//       "name": "Estación Sur",
+//       "location": "Ubicada en zona céntrica",
+//       "latitude": -34.6,
+//       "longitude": -58.3,
+//       "temperature": 22.5,
+//       "humidity": 75,
+//       "status": "offline",
+//       "lastUpdate": "2025-03-06T21:35:00"
+//   },
+//   {
+//       "id": "este",
+//       "name": "Estación Este",
+//       "location": "Ubicada en zona céntrica",
+//       "latitude": -34.6,
+//       "longitude": -58.3,
+//       "temperature": 22.5,
+//       "humidity": 75,
+//       "status": "offline",
+//       "lastUpdate": "2025-03-06T21:35:05"
+//   }
+// ]

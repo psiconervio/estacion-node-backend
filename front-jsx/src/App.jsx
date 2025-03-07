@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+  // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import {
   Search,
@@ -15,7 +17,9 @@ import fetchAndTransformStationsData from "./libs/reestructuracion";
 import { Thermometer, Droplets, Menu, X } from "lucide-react";
 import WeatherMap from "./components/WeatherMap";
 import { weatherStations } from "./data/stations";
+// import  weatherStations  from "./libs/reestructuracionmapa";
 
+// console.log(fetchAndTransformStations);
 function App() {
   // Usamos un estado inicial vacío para las estaciones
   const [isMenuOpen, setIsMenuOpen] = useState(false);

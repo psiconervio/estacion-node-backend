@@ -54,7 +54,7 @@ export default function StationCard({ station, onViewDetails }) {
           <Thermometer className="w-5 h-5 text-blue-500 dark:text-blue-400 mr-2" />
           <div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Temperatura</p>
-            <p className="font-semibold text-gray-900 dark:text-white">{station.readings.temperature}°C</p>
+            <p className="font-semibold text-gray-900 dark:text-white">{station.readings.temperature.toFixed(1)}°C</p>
           </div>
         </div>
         
@@ -62,7 +62,7 @@ export default function StationCard({ station, onViewDetails }) {
           <Droplets className="w-5 h-5 text-blue-500 dark:text-blue-400 mr-2" />
           <div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Humedad</p>
-            <p className="font-semibold text-gray-900 dark:text-white">{station.readings.humidity}%</p>
+            <p className="font-semibold text-gray-900 dark:text-white">{station.readings.humidity.toFixed(1)}%</p>
           </div>
         </div>
         
@@ -70,7 +70,7 @@ export default function StationCard({ station, onViewDetails }) {
           <Gauge className="w-5 h-5 text-blue-500 dark:text-blue-400 mr-2" />
           <div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Presión</p>
-            <p className="font-semibold text-gray-900 dark:text-white">{station.readings.pressure} hPa</p>
+            <p className="font-semibold text-gray-900 dark:text-white">{station.readings.pressure.toFixed(1)} hPa</p>
           </div>
         </div> */}
         
@@ -78,7 +78,7 @@ export default function StationCard({ station, onViewDetails }) {
           <Wind className="w-5 h-5 text-blue-500 dark:text-blue-400 mr-2" />
           <div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Velocidad del Viento</p>
-            <p className="font-semibold text-gray-900 dark:text-white">{station.readings.windSpeed} km/h</p>
+            <p className="font-semibold text-gray-900 dark:text-white">{station.readings.windSpeed.toFixed(1)} km/h</p>
           </div>
         </div> */}
         
@@ -94,7 +94,7 @@ export default function StationCard({ station, onViewDetails }) {
           <CloudRain className="w-5 h-5 text-blue-500 dark:text-blue-400 mr-2" />
           <div>
             <p className="text-sm text-gray-600 dark:text-gray-400">Precipitación</p>
-            <p className="font-semibold text-gray-900 dark:text-white">{station.readings.precipitation} mm</p>
+            <p className="font-semibold text-gray-900 dark:text-white">{station.readings.precipitation.toFixed(1)} mm</p>
           </div>
         </div> */}
       </div>
