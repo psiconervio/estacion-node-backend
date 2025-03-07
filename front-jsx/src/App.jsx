@@ -210,7 +210,7 @@ function App() {
         {/* MAPA */}
         {/* <div className="py-8 md:py-8 mx-auto  "> */}
         <div
-          className={`bg-white py-8 md:py-8 mx-auto rounded-lg shadow-lg overflow-hidden dark:bg-gray-800 transition-opacity duration-300 ${
+          className={`py-8 md:py-8 mx-auto transition-opacity duration-300 ${
             selectedStation ? "opacity-50" : "opacity-100"
           }`}
         >
