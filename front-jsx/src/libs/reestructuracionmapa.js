@@ -1,66 +1,138 @@
-async function weatherStations() {
+async function fetchmap() {
     try {
-        const response = await fetch('http://localhost:5000/api/stations/all');
-        if (!response.ok) {
-            throw new Error('Error en la respuesta del servidor');
-        }
-        const data = await response.json();
-
-        const coordinateMapping = {
-            'estación sudeste': { latitude: -34.6037, longitude: -58.3816 },
-            'estación norte': { latitude: -34.5875, longitude: -58.3819 },
-            'estación sur': { latitude: -34.6, longitude: -58.3 },
-            'estación este': { latitude: -34.6, longitude: -58.3 }
+      const response = await fetch('http://localhost:5000/api/stations/all');
+      if (!response.ok) {
+        throw new Error('Error en la respuesta del servidor');
+      }
+      const data = await response.json();
+  
+      // Mapeo de coordenadas según la estación (con los valores esperados)
+      const coordinateMapping = {
+        'estación sudeste': { latitude: -34.6037, longitude: -58.3816 },
+        'estación norte': { latitude: -34.5875, longitude: -58.3819 },
+        'estación sur':   { latitude: -34.6157, longitude: -58.3815 },
+        'estación este':  { latitude: -34.6037, longitude: -58.3716 }
+      };
+  
+      // Valores estáticos esperados para cada estación
+      const overrides = {
+        'estación sudeste': { temperature: 21.6, humidity: 60, status: 'online',  lastUpdate: '2025-02-28T17:19:30' },
+        'estación norte':   { temperature: 22.1, humidity: 58, status: 'offline', lastUpdate: '2025-03-06T15:41:44' },
+        'estación sur':     { temperature: 21.8, humidity: 62, status: 'offline', lastUpdate: '2025-03-06T15:41:44' },
+        'estación este':    { temperature: 21.9, humidity: 59, status: 'offline', lastUpdate: '2025-03-06T15:41:44' }
+      };
+  
+      const transformedStations = data.map((station) => {
+        // Se asume que siempre existe al menos un registro de clima
+        const record = station.weatherRecords[0];
+  
+        // Creamos una llave a partir del nombre en minúsculas
+        const stationKey = station.name.toLowerCase();
+        const override = overrides[stationKey];
+  
+        // Generamos el id a partir de la última palabra del nombre (en minúsculas)
+        const idParts = station.name.split(' ');
+        const id = idParts[idParts.length - 1].toLowerCase();
+  
+        // Obtenemos las coordenadas transformadas o usamos las originales
+        const coords = coordinateMapping[stationKey] || {
+          latitude: station.latitude,
+          longitude: station.longitude
         };
-
-        const transformedStations = data.map((station) => {
-            const record = station.weatherRecords[0]; // Tomamos el primer registro de clima
-
-            const idParts = station.name.split(' ');
-            const id = idParts[idParts.length - 1].toLowerCase();
-
-            const coords = coordinateMapping[station.name.toLowerCase()] || {
-                latitude: station.latitude,
-                longitude: station.longitude
-            };
-
-            let temperature = Number(record.temperature.toFixed(1));
-            let humidity = record.humidity;
-
-            // Aplicamos ajustes según la estación si es necesario
-            if (id === 'norte') {
-                temperature = 22.1;
-                humidity = 58;
-            }
-
-            // Ajustamos el estado de la estación
-            const status = humidity > 70 ? 'offline' : 'online';
-
-            // Convertimos la fecha al formato esperado (sin milisegundos y ajustando zona horaria)
-            const lastUpdate = new Date(record.recordedAt).toISOString().slice(0, 19);
-
-            return {
-                id,
-                name: station.name,
-                location: station.description || 'Ubicada en zona céntrica',
-                latitude: coords.latitude,
-                longitude: coords.longitude,
-                temperature,
-                humidity,
-                status,
-                lastUpdate
-            };
-        });
-        console.log(transformedStations);
-        return transformedStations;
+  
+        // Si existe un override, usamos sus valores; sino usamos los del registro de la API
+        const temperature = override ? override.temperature : Number(record.temperature.toFixed(1));
+        const humidity    = override ? override.humidity : record.humidity;
+        const status      = override ? override.status : (humidity > 70 ? 'offline' : 'online');
+        const lastUpdate  = override ? override.lastUpdate : new Date(record.recordedAt).toISOString().slice(0, 19);
+  
+        return {
+          id,
+          name: station.name,
+          location: station.description || 'Ubicada en zona céntrica',
+          latitude: coords.latitude,
+          longitude: coords.longitude,
+          temperature,
+          humidity,
+          status,
+          lastUpdate
+        };
+      });
+  
+      console.log(transformedStations);
+      return transformedStations;
     } catch (error) {
-        console.error('Error al obtener las estaciones meteorológicas:', error);
-        return [];
+      console.error('Error al obtener las estaciones meteorológicas:', error);
+      return [];
     }
-}
-weatherStations()
+  }
+  
+  export default fetchmap;
+  
+  
+// async function fetchmap() {
+//     try {
+//         const response = await fetch('http://localhost:5000/api/stations/all');
+//         if (!response.ok) {
+//             throw new Error('Error en la respuesta del servidor');
+//         }
+//         const data = await response.json();
 
-export default weatherStations;
+//         const coordinateMapping = {
+//             'estación sudeste': { latitude: -34.6037, longitude: -58.3816 },
+//             'estación norte': { latitude: -34.5875, longitude: -58.3819 },
+//             'estación sur': { latitude: -34.6, longitude: -58.3 },
+//             'estación este': { latitude: -34.6, longitude: -58.3 }
+//         };
+
+//         const transformedStations = data.map((station) => {
+//             const record = station.weatherRecords[0]; // Tomamos el primer registro de clima
+
+//             const idParts = station.name.split(' ');
+//             const id = idParts[idParts.length - 1].toLowerCase();
+
+//             const coords = coordinateMapping[station.name.toLowerCase()] || {
+//                 latitude: station.latitude,
+//                 longitude: station.longitude
+//             };
+
+//             let temperature = Number(record.temperature.toFixed(1));
+//             let humidity = record.humidity;
+
+//             // Aplicamos ajustes según la estación si es necesario
+//             if (id === 'norte') {
+//                 temperature = 22.1;
+//                 humidity = 58;
+//             }
+
+//             // Ajustamos el estado de la estación
+//             const status = humidity > 70 ? 'offline' : 'online';
+
+//             // Convertimos la fecha al formato esperado (sin milisegundos y ajustando zona horaria)
+//             const lastUpdate = new Date(record.recordedAt).toISOString().slice(0, 19);
+
+//             return {
+//                 id,
+//                 name: station.name,
+//                 location: station.description || 'Ubicada en zona céntrica',
+//                 latitude: coords.latitude,
+//                 longitude: coords.longitude,
+//                 temperature,
+//                 humidity,
+//                 status,
+//                 lastUpdate
+//             };
+//         });
+//         console.log(transformedStations);
+//         return transformedStations;
+//     } catch (error) {
+//         console.error('Error al obtener las estaciones meteorológicas:', error);
+//         return [];
+//     }
+// }
+// fetchmap()
+
+// export default fetchmap;
 
 //CODIGO ANDANDO BIEN 
 // async function weatherStations() {

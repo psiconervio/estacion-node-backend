@@ -3,7 +3,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.heat';
 
-const WeatherMap = ({ stations, mapType }) => {
+const WeatherMap = ({ map, mapType }) => {
   const mapRef = useRef(null);
   const heatLayerRef = useRef(null);
 
@@ -31,7 +31,7 @@ const WeatherMap = ({ stations, mapType }) => {
       }).addTo(mapRef.current);
     }
 
-    const data = stations.map(station => {
+    const data = map.map(station => {
       const value = mapType === 'temperature' ? station.temperature : station.humidity;
       const intensity = mapType === 'temperature' 
         ? (value - 15) / 15
@@ -57,7 +57,7 @@ const WeatherMap = ({ stations, mapType }) => {
         : { 0.4: 'yellow', 0.6: 'lime', 0.8: 'blue', 1: 'purple' }
     }).addTo(mapRef.current);
 
-    stations.forEach(station => {
+    map.forEach(station => {
       const color = station.status === 'online' ? 'green' : 
                    station.status === 'offline' ? 'red' : 'orange';
       
@@ -93,7 +93,7 @@ const WeatherMap = ({ stations, mapType }) => {
         mapRef.current = null;
       }
     };
-  }, [stations, mapType]);
+  }, [map, mapType]);
 
   return <div id="map" className="w-full h-[300px] md:h-[600px]" />;
 };

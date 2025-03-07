@@ -16,12 +16,13 @@ import StationDetails from "./components/StationDetails.jsx";
 import fetchAndTransformStationsData from "./libs/reestructuracion";
 import { Thermometer, Droplets, Menu, X } from "lucide-react";
 import WeatherMap from "./components/WeatherMap";
-// import { weatherStations } from "./data/stations";
-import  weatherStations  from "./libs/reestructuracionmapa";
+import { weatherStations } from "./data/stationsmaps";
+import  fetchmap  from "./libs/reestructuracionmapa";
 
 // console.log(fetchAndTransformStations);
 function App() {
   // Usamos un estado inicial vacío para las estaciones
+const [map, setMap] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mapType, setMapType] = useState("temperature");
   const [stations, setStations] = useState([]);
@@ -34,7 +35,14 @@ function App() {
     }
     return false;
   });
-
+//fetchmap
+useEffect(() => {
+  async function getStations() {
+    const data = await fetchmap();
+    setMap(data);
+  }
+  getStations();
+}, []);
   // Configuración de modo oscuro
   useEffect(() => {
     if (darkMode) {
@@ -230,7 +238,8 @@ function App() {
                 </button>
               </div>
             </div>
-            <WeatherMap stations={weatherStations} mapType={mapType} />
+            {/* <WeatherMap stations={weatherStations} mapType={mapType} /> */}
+            <WeatherMap map={map} mapType={mapType} />
           </div>
 
           {/* Mobile Menu */}
