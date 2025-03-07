@@ -1,7 +1,41 @@
 // src/controllers/stationController.js
 // import prisma from "../prisma.js";
 import prisma from "../config/db.js";
+export const getStationsWithWeatherRecords = async (req, res) => {
+  try {
+    // Obtenemos todas las estaciones con todos sus registros meteorológicos
+    const stations = await prisma.station.findMany({
+      include: {
+        weatherRecords: true, // Incluir todos los registros meteorológicos relacionados
+      },
+    });
 
+    res.json(stations);
+  } catch (error) {
+    console.error("Error al obtener estaciones con datos:", error);
+    res.status(500).json({ error: "Error al obtener estaciones con datos" });
+  }
+};
+//Estaciones con los ultimos datos
+export const getStationsAll = async (req, res) => {
+  try {
+    const stations = await prisma.station.findMany({
+      include: {
+        weatherRecords: {
+          take: 1, // Solo queremos el último registro
+          orderBy: {
+            recordedAt: "desc", // Ordenamos por la fecha de registro
+          },
+        },
+      },
+    });
+    res.json(stations);
+    // res.json(stationsWithLatestWeather);
+  } catch (error) {
+    console.error("Error al obtener estaciones:", error);
+    res.status(500).json({ error: "Error al obtener estaciones" });
+  }
+};
 /**
  * GET /api/stations
  * Retorna la lista de todas las estaciones

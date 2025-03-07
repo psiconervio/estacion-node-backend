@@ -4,6 +4,8 @@ import {
   getStations,
   getStationById,
   createStation,
+  getStationsAll,
+  getStationsWithWeatherRecords,
 } from "../controllers/stationController.js";
 import { validateStation } from "../middlewares/validateStation.js";
 
