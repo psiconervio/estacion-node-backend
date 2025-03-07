@@ -239,7 +239,7 @@ useEffect(() => {
               </div>
             </div>
             {/* <WeatherMap stations={weatherStations} mapType={mapType} /> */}
-            {/* <WeatherMap map={map} mapType={mapType} /> */}
+            <WeatherMap map={map} mapType={mapType} />
           </div>
 
           {/* Mobile Menu */}
