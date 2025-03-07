@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-  // eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import {
   Search,
@@ -17,12 +17,12 @@ import fetchAndTransformStationsData from "./libs/reestructuracion";
 import { Thermometer, Droplets, Menu, X } from "lucide-react";
 import WeatherMap from "./components/WeatherMap";
 import { weatherStations } from "./data/stationsmaps";
-import  fetchmap  from "./libs/reestructuracionmapa";
+import fetchmap from "./libs/reestructuracionmapa";
 
 // console.log(fetchAndTransformStations);
 function App() {
   // Usamos un estado inicial vacío para las estaciones
-const [map, setMap] = useState([]);
+  const [map, setMap] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mapType, setMapType] = useState("temperature");
   const [stations, setStations] = useState([]);
@@ -35,14 +35,14 @@ const [map, setMap] = useState([]);
     }
     return false;
   });
-//fetchmap
-useEffect(() => {
-  async function getStations() {
-    const data = await fetchmap();
-    setMap(data);
-  }
-  getStations();
-}, []);
+  //fetchmap
+  useEffect(() => {
+    async function getStations() {
+      const data = await fetchmap();
+      setMap(data);
+    }
+    getStations();
+  }, []);
   // Configuración de modo oscuro
   useEffect(() => {
     if (darkMode) {
@@ -208,7 +208,12 @@ useEffect(() => {
           />
         )}
         {/* MAPA */}
-        <div className="py-8 md:py-8 mx-auto ">
+        {/* <div className="py-8 md:py-8 mx-auto  "> */}
+        <div
+          className={`bg-white py-8 md:py-8 mx-auto rounded-lg shadow-lg overflow-hidden dark:bg-gray-800 transition-opacity duration-300 ${
+            selectedStation ? "opacity-50" : "opacity-100"
+          }`}
+        >
           {/* Main Content */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-800">
             {/* Map Controls */}
@@ -243,7 +248,7 @@ useEffect(() => {
           </div>
 
           {/* Mobile Menu */}
-          <div
+          {/* <div
             className={`
           fixed inset-0 bg-gray-800 bg-opacity-50 transition-opacity z-40 md:hidden
           ${isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"}
@@ -290,7 +295,7 @@ useEffect(() => {
                 ))}
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </main>
     </div>
