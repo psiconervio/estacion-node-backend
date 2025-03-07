@@ -65,7 +65,6 @@ export default function StationCard({ station, onViewDetails }) {
             <p className="font-semibold text-gray-900 dark:text-white">{station.readings.humidity.toFixed(1)}%</p>
           </div>
         </div>
-        
         {/* <div className="flex items-center">
           <Gauge className="w-5 h-5 text-blue-500 dark:text-blue-400 mr-2" />
           <div>
@@ -98,10 +97,10 @@ export default function StationCard({ station, onViewDetails }) {
           </div>
         </div> */}
       </div>
-      
       <div className="flex items-center justify-between text-sm">
         <span className="text-gray-500 dark:text-gray-400">
-          Última actualización: {new Date(station.lastUpdate).toLocaleString()}
+          {/* Última actualización: {new Date(station.lastUpdate).toLocaleString()} */}
+          Última actualización: {station.lastUpdate}
         </span>
         <button
           onClick={() => onViewDetails(station)}
