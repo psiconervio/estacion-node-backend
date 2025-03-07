@@ -2,7 +2,8 @@
 //codigo con algunos errores
 async function fetchmap() {
   try {
-    const response = await fetch('http://localhost:5000/api/stations/alll');
+    // const response = await fetch('http://localhost:5000/api/stations/alll');
+    const response = await fetch('https://estacion-node-backend-1.onrender.com/api/stations/alll');
     if (!response.ok) {
       throw new Error('Error en la respuesta del servidor');
     }
