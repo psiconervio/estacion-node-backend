@@ -190,7 +190,7 @@ useEffect(() => {
         </div>
 
         {/* Weather Stations Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {filteredStations.map((station) => (
             <StationCard
               key={station.id}
@@ -208,7 +208,7 @@ useEffect(() => {
           />
         )}
         {/* MAPA */}
-        <div className="p-4 md:p-8 max-w-6xl mx-auto ">
+        <div className="py-8 md:py-8 mx-auto ">
           {/* Main Content */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-800">
             {/* Map Controls */}

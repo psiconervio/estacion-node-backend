@@ -12,7 +12,7 @@ const WeatherMap = ({ map, mapType }) => {
       mapRef.current = L.map('map', {
         zoomControl: false, // Disable default zoom control
         attributionControl: false // Disable default attribution control
-      }).setView([-34.6037, -58.3816], 13);
+      }).setView([-28.4680, -65.7797], 13);
       
       // Add zoom control to top-right
       L.control.zoom({
