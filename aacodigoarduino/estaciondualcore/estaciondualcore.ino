@@ -41,7 +41,7 @@ void conectarWiFi() {
 // Función para leer el pluviometro
 float pluviometro() {
   lecturaPluv = analogRead(36);
-  float factorMM = 3.4;
+  float factorMM = 0.277;
   if (lecturaPluv < 600) {
     contadorEstadoPluviometroB = 0;
     if (contadorEstadoPluviometroA == 0) {
