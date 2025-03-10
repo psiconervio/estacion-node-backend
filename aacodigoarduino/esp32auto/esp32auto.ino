@@ -1,93 +1,65 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
-#include <Update.h>
-#include "esp_ota_ops.h"
+#include <Update.h>  // Librería para OTA por HTTP
 
-// 🔹 Configuración WiFi
-const char* ssid = "PB02";
+const char* ssid = "PB02"; // 🔹 Reemplaza con tu WiFi
 const char* password = "12345678";
 
-// 🔹 URL del firmware nuevo
-const char* firmware_url = "https://servidor-esp32.onrender.com/firmware.bin";
-
-// Tiempo máximo para confirmar el firmware nuevo (30 seg)
-#define ROLLBACK_TIMEOUT 30000
+const char* firmware_url = "https://servidor-esp32.onrender.com/firmware.bin";  // 🔹 URL del firmware en tu servidor
+const int check_interval = 60 * 1000;  // Chequea cada 60 segundos
 
 void setup() {
-  Serial.begin(115200);
-  WiFi.begin(ssid, password);
-
-  Serial.print("Conectando a WiFi...");
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("\nConectado a WiFi");
-
-  // 🔹 Si el firmware nuevo no se confirmó, vuelve al anterior
-  checkRollback();
-
-  // 🔹 Intentar actualizar OTA
-  updateFirmware();
-}
-
-void updateFirmware() {
-  Serial.println("🔄 Descargando firmware...");
-  HTTPClient http;
-  http.begin(firmware_url);
-
-  int httpCode = http.GET();
-  if (httpCode == HTTP_CODE_OK) {
-    Serial.println("✅ Descargando y actualizando...");
-    
-    int contentLength = http.getSize();
-    WiFiClient* stream = http.getStreamPtr();
-
-    if (!Update.begin(contentLength)) {
-      Serial.println("❌ Error al iniciar la actualización");
-      return;
+    Serial.begin(115200);
+    WiFi.begin(ssid, password);
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        Serial.print(".");
     }
-
-    size_t written = Update.writeStream(*stream);
-    if (written == contentLength) {
-      Serial.println("✅ Actualización exitosa, marcando como pendiente...");
-      Update.end(true);
-
-      // 🔹 Marcar firmware como "pendiente" hasta confirmarlo
-      esp_ota_mark_app_invalid();
-
-      // Reiniciar para probar el nuevo firmware
-      Serial.println("🔄 Reiniciando con el nuevo firmware...");
-      delay(1000);
-      ESP.restart();
-    } else {
-      Serial.println("❌ Falló la actualización, manteniendo el firmware anterior.");
-    }
-  } else {
-    Serial.println("❌ No se pudo descargar el firmware");
-  }
-
-  http.end();
-}
-
-// 🔄 **Verificar si se debe hacer rollback**
-void checkRollback() {
-  esp_ota_img_states_t ota_state;
-  esp_err_t err = esp_ota_get_state_partition(esp_ota_get_running_partition(), &ota_state);
-
-  if (err == ESP_OK && ota_state == ESP_OTA_IMG_PENDING_VERIFY) {
-    Serial.println("⚠️ Firmware NO confirmado, esperando 30s...");
-    delay(ROLLBACK_TIMEOUT);
-
-    // 🔹 Si no se confirmó en 30s, volver al firmware anterior
-    Serial.println("⏪ Rollback automático al firmware anterior...");
-    esp_ota_mark_app_invalid();
-    ESP.restart();
-  } else {
-    Serial.println("✅ Firmware confirmado, ejecutándose normalmente.");
-  }
+    Serial.println("\n🟢 Conectado a WiFi");
 }
 
 void loop() {
-  delay(1000);
+    checkForUpdates();
+    delay(check_interval);  // Espera antes de volver a verificar
+}
+
+void checkForUpdates() {
+    Serial.println("🔍 Buscando actualización...");
+
+    HTTPClient http;
+    http.begin(firmware_url);
+    int httpCode = http.GET();
+    
+    if (httpCode == HTTP_CODE_OK) {
+        Serial.println("📥 Descargando nueva versión...");
+        updateFirmware(http);
+    } else {
+        Serial.printf("⚠️ No hay actualización disponible (Código: %d)\n", httpCode);
+    }
+    http.end();
+}
+
+void updateFirmware(HTTPClient& http) {
+    int contentLength = http.getSize();
+    bool canBegin = Update.begin(contentLength);
+
+    if (canBegin) {
+        WiFiClient* client = http.getStreamPtr();
+        size_t written = Update.writeStream(*client);
+
+        if (written == contentLength) {
+            Serial.println("✅ Firmware descargado correctamente.");
+        } else {
+            Serial.println("❌ Error: No se descargó completamente.");
+        }
+
+        if (Update.end()) {
+            Serial.println("🔄 Reiniciando para aplicar actualización...");
+            ESP.restart();
+        } else {
+            Serial.println("⛔ Error al actualizar.");
+        }
+    } else {
+        Serial.println("⚠️ No hay suficiente espacio para actualizar.");
+    }
 }

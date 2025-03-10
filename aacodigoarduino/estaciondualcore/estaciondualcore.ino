@@ -226,12 +226,12 @@ void tareaEnvio(void * parameter) {
       String postData = JSON.stringify(jsonData);
 
       int httpCode = http.POST(postData);
-      String payload = http.getString();
+      // String payload = http.getString();
 
       Serial.print("httpCode: ");
       Serial.println(httpCode);
-      Serial.print("payload: ");
-      Serial.println(payload);
+      // Serial.print("payload: ");
+      // Serial.println(payload);
       Serial.println("--------------");
 
       http.end();
@@ -241,7 +241,7 @@ void tareaEnvio(void * parameter) {
 }
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   conectarWiFi();
   analogReadResolution(10);
   dht.begin();
