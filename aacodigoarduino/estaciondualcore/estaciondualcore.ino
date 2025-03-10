@@ -4,8 +4,8 @@
 #include "DHT.h"
 
 // Configuración del WiFi
-#define WIFI_SSID "Auditorio Nodo"
-#define WIFI_PASSWORD "auditorio.nodo"
+#define WIFI_SSID "PB02"
+#define WIFI_PASSWORD "12345678"
 
 // Configuración del sensor DHT
 #define DHTPIN 23
@@ -21,7 +21,7 @@ int lecturaPluv = 0, contadorCiclosPluv = 0, contadorEstadoPluviometroA = 0, con
 float acumuladorMmCaidos = 0;
 
 // Intervalo de envío de datos (15 minutos)
-const unsigned long INTERVALO_ENVIO = 900000;
+const unsigned long INTERVALO_ENVIO = 300000;
 unsigned long ultimoEnvio = 0;
 
 // Conexión WiFi
@@ -272,5 +272,6 @@ void setup() {
 
 void loop() {
   // El loop se mantiene vacío; todas las funciones se ejecutan a través de las tareas.
+  // Serial.printf("memoria libre %u btyes/n", ESP.getFreeSketchSpace());
   vTaskDelay(1000 / portTICK_PERIOD_MS);
 }
