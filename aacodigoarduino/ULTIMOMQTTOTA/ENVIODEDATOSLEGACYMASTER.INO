@@ -11,10 +11,10 @@
 #define DEVICE_NAME      "NODO"  // alias opcional
 
 // Credenciales WiFi
-const char* WIFI_SSID     = "Tplink4568";
-const char* WIFI_PASSWORD = "delc@mpo4268";
 // const char* WIFI_SSID     = "Tplink4568";
 // const char* WIFI_PASSWORD = "delc@mpo4268";
+const char* WIFI_SSID     = "PB02";
+const char* WIFI_PASSWORD = "12345678";
 
 // Broker MQTT (ej. HiveMQ Cloud)
 const char* MQTT_HOST     = "ad11f935a9c74146a4d2e647921bf024.s1.eu.hivemq.cloud";
