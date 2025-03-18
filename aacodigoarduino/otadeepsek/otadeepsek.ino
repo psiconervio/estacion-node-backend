@@ -10,8 +10,8 @@
 #define FIRMWARE_VERSION "1.0.0"
 
 // Credenciales WiFi
-const char* WIFI_SSID     = "PB02";
-const char* WIFI_PASSWORD = "12345678";
+const char* WIFI_SSID     = "Tplink4568";
+const char* WIFI_PASSWORD = "delc@mpo4268";
 
 // Broker MQTT (ej. HiveMQ Cloud)
 const char* MQTT_HOST     = "ad11953c9a74146a4a26e47921b1f024.s1.eu.hivemq.cloud";
