@@ -9,7 +9,7 @@
 // =====================
 // CONFIGURACIONES
 // =====================
-#define FIRMWARE_VERSION "1.0.0"
+#define FIRMWARE_VERSION "1.0.1"
 #define DEVICE_NAME      "EstacionMetereologica"  // alias opcional
 
 // Credenciales WiFi
