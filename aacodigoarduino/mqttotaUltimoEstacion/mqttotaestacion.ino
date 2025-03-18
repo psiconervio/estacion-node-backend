@@ -10,7 +10,7 @@
 // CONFIGURACIONES
 // =====================
 #define FIRMWARE_VERSION "1.0.0"
-#define DEVICE_NAME      "NODO"
+#define DEVICE_NAME      "EstacionMetereologica"  // alias opcional
 
 // Credenciales WiFi
 const char* WIFI_SSID     = "Auditorio Nodo";
