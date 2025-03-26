@@ -5,9 +5,27 @@ import recordRoutes from './routes/recordRoutes.js';
 import stationRoutes from "./routes/stationRoutes.js";
 import weatherRoutes from "./routes/weatherRoutes.js";
 import  cronRoutes  from "./routes/cronRoutes.js";
+import MqttClient from './mqtt/mqttClient';
+import dataController from './controllers/dataController';
+
+const brokerUrl = 'mqtt://localhost:1883'; // Cambia la URL según tu configuración
+const topic = 'esp32/data'; // Tópico al que se enviarán los datos desde el ESP32
+
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
+//envio de datos mqtt
+// Instanciar el cliente MQTT
+const mqttClient = new MqttClient(brokerUrl);
+
+// Suscribirse al tópico definido
+mqttClient.subscribe(topic);
+
+// Manejar los mensajes recibidos
+mqttClient.onMessage((topic, message) => {
+  console.log(`Mensaje recibido en ${topic}: ${message.toString()}`);
+  dataController.saveData(topic, message);
+});
 
 // Middlewares
 app.use(express.json());
