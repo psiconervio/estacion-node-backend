@@ -10,17 +10,17 @@
 // CONFIGURACIONES GENERALES
 // =====================
 #define FIRMWARE_VERSION "1.0.0"
-#define DEVICE_NAME      "NODO"
+#define DEVICE_NAME "NODO"
 
 // Credenciales WiFi
-const char* WIFI_SSID     = "Auditorio Nodo";
+const char* WIFI_SSID = "Auditorio Nodo";
 const char* WIFI_PASSWORD = "auditorio.nodo";
 
 // =====================
 // BROKER PARA FIRMWARE Y OTA
 // =====================
 const char* MQTT_FW_HOST = "ad11f935a9c74146a4d2e647921bf024.s1.eu.hivemq.cloud";
-const int   MQTT_FW_PORT = 8883;
+const int MQTT_FW_PORT = 8883;
 const char* MQTT_FW_USER = "Augustodelcampo97";
 const char* MQTT_FW_PASS = "Augustodelcampo97";
 
@@ -58,7 +58,7 @@ float acumuladorMmCaidos = 0;
 const unsigned long INTERVALO_ENVIO = 300000;  // 5 minutos para envío vía HTTP
 unsigned long ultimoEnvio = 0;
 
-const unsigned long HEARTBEAT_INTERVAL = 60000; // Heartbeat cada 60 segundos
+const unsigned long HEARTBEAT_INTERVAL = 60000;  // Heartbeat cada 60 segundos
 unsigned long lastHeartbeat = 0;
 
 // =====================
@@ -120,10 +120,10 @@ void mqttCallbackFW(char* topic, byte* payload, unsigned int length) {
   // Formato esperado: "<MAC>|<URL>" o "all|<URL>"
   int sepIndex = msg.indexOf('|');
   if (sepIndex < 0) return;
-  
+
   String targetId = msg.substring(0, sepIndex);
   String firmwareUrl = msg.substring(sepIndex + 1);
-  
+
   // Ejecuta la OTA si el mensaje es para este dispositivo o para todos ("all")
   if ((targetId == deviceMac || targetId == "all") && firmwareUrl.startsWith("http")) {
     Serial.println("[OTA] Comando recibido para actualizar firmware.");
@@ -134,9 +134,7 @@ void mqttCallbackFW(char* topic, byte* payload, unsigned int length) {
 // Función para conectar al broker MQTT de firmware
 void connectMQTTFW() {
   String willTopic = "esp32/status";
-  String willMessage = String("{\"mac\":\"") + deviceMac +
-                       "\",\"name\":\"" + DEVICE_NAME +
-                       "\",\"status\":\"offline\"}";
+  String willMessage = String("{\"mac\":\"") + deviceMac + "\",\"name\":\"" + DEVICE_NAME + "\",\"status\":\"offline\"}";
   String clientId = "ESP32-FW-" + deviceMac;
   while (!mqttClientFW.connected()) {
     Serial.println("Conectando a MQTT (firmware)...");
@@ -144,9 +142,7 @@ void connectMQTTFW() {
                              willTopic.c_str(), 0, false, willMessage.c_str())) {
       Serial.println("MQTT (firmware) conectado!");
       // Publicar estado "online" y versión de firmware
-      String onlineMsg = String("{\"mac\":\"") + deviceMac +
-                         "\",\"name\":\"" + DEVICE_NAME +
-                         "\",\"status\":\"online\",\"version\":\"" + FIRMWARE_VERSION + "\"}";
+      String onlineMsg = String("{\"mac\":\"") + deviceMac + "\",\"name\":\"" + DEVICE_NAME + "\",\"status\":\"online\",\"version\":\"" + FIRMWARE_VERSION + "\"}";
       mqttClientFW.publish("esp32/status", onlineMsg.c_str(), false);
       // Suscribirse al tópico para actualizaciones OTA
       mqttClientFW.subscribe("esp32/update");
@@ -161,7 +157,7 @@ void connectMQTTFW() {
 // =====================
 // TAREA DE LECTURA CONTINUA DE SENSORES (anemómetro y pluviometro)
 // =====================
-void tareaSensores(void * parameter) {
+void tareaSensores(void* parameter) {
   for (;;) {
     // Lectura del pluviometro (pin 36)
     lecturaPluv = analogRead(36);
@@ -179,7 +175,7 @@ void tareaSensores(void * parameter) {
       }
       contadorEstadoPluviometroB++;
     }
-    
+
     // Lectura del anemómetro (pin 39)
     lecturaAnemo = analogRead(39);
     promedioAnemo += lecturaAnemo;
@@ -191,7 +187,7 @@ void tareaSensores(void * parameter) {
     } else {
       contadorEstadoAnemoA = 0;
     }
-    
+
     tiempoAnemo += 10;
     if (tiempoAnemo >= 10000) {
       promedioAnemo /= 1000;
@@ -204,7 +200,7 @@ void tareaSensores(void * parameter) {
       vueltasAnemo = 0;
       tiempoAnemo = 0;
     }
-    
+
     vTaskDelay(10 / portTICK_PERIOD_MS);
   }
 }
@@ -212,55 +208,57 @@ void tareaSensores(void * parameter) {
 // =====================
 // TAREA DE ENVÍO DE DATOS VIA HTTP (sin envío por MQTT)
 // =====================
-void tareaEnvio(void * parameter) {
+void tareaEnvio(void* parameter) {
   for (;;) {
     unsigned long tiempoActual = millis();
     if (tiempoActual - ultimoEnvio >= INTERVALO_ENVIO) {
       ultimoEnvio = tiempoActual;
-      
+
       if (WiFi.status() != WL_CONNECTED) {
         connectWiFi();
       }
-      
+
       float humedad = dht.readHumidity();
       float temperatura = dht.readTemperature();
-      
+
       Serial.print("Temperatura: ");
       Serial.print(temperatura);
       Serial.println("°C");
-      
+
       Serial.print("Humedad: ");
       Serial.print(humedad);
       Serial.println("%");
-      
+
       Serial.print("Viento (vueltas): ");
       Serial.println(acumuladorVueltas);
-      
+
       Serial.print("Lluvia (mm): ");
       Serial.println(acumuladorMmCaidos);
-      
+
       // Envío de datos vía HTTP
       HTTPClient http;
       http.begin(HTTP_SERVER_URL);
       http.addHeader("Content-Type", "application/json");
-      
+
       JSONVar jsonData;
-      jsonData["mac"] = deviceMac;
-      jsonData["board"] = "esp32_01eva01";
-      jsonData["temperature"] = String(temperatura);
-      jsonData["humidity"] = String(humedad);
-      jsonData["anemometro"] = String(acumuladorVueltas);
-      jsonData["pluviometro"] = String(acumuladorMmCaidos);
-      
+      // jsonData["mac"] = deviceMac;
+      // jsonData["board"] = "esp32_01eva01";
+      // jsonData["temperature"] = String(temperatura);
+      jsonData["temperature"] = 10;
+      // jsonData["humidity"] = String(humedad);
+      jsonData["humidity"] = 10;
+      // jsonData["anemometro"] = String(acumuladorVueltas);
+      // jsonData["pluviometro"] = String(acumuladorMmCaidos);
+
       String postData = JSON.stringify(jsonData);
       int httpCode = http.POST(postData);
-      
+
       Serial.print("httpCode: ");
       Serial.println(httpCode);
       Serial.println("--------------");
-      
+
       http.end();
-      
+
       // Reiniciar acumulador de lluvia tras envío
       acumuladorMmCaidos = 0;
     }
@@ -274,24 +272,24 @@ void tareaEnvio(void * parameter) {
 void setup() {
   Serial.begin(115200);
   delay(1000);
-  
+
   // Conectar a WiFi
   connectWiFi();
-  
+
   // Inicializar el sensor DHT
   dht.begin();
-  
+
   // Obtener la MAC del dispositivo
   deviceMac = WiFi.macAddress();
   Serial.print("MAC: ");
   Serial.println(deviceMac);
-  
+
   // Configurar cliente MQTT seguro para OTA
-  fwClient.setInsecure(); // Para demo; en producción se debe validar el certificado
+  fwClient.setInsecure();  // Para demo; en producción se debe validar el certificado
   mqttClientFW.setServer(MQTT_FW_HOST, MQTT_FW_PORT);
   mqttClientFW.setCallback(mqttCallbackFW);
   connectMQTTFW();
-  
+
   // Crear tarea para lectura continua de sensores en el core 1
   xTaskCreatePinnedToCore(tareaSensores, "TareaSensores", 10000, NULL, 1, NULL, 1);
   // Crear tarea para envío de datos vía HTTP en el core 0
@@ -300,7 +298,7 @@ void setup() {
 
 void loop() {
   mqttClientFW.loop();
-  
+
   // Reconectar si se pierde la conexión WiFi o el broker MQTT de firmware
   if (WiFi.status() != WL_CONNECTED) {
     connectWiFi();
@@ -308,15 +306,13 @@ void loop() {
   if (!mqttClientFW.connected()) {
     connectMQTTFW();
   }
-  
+
   // Enviar heartbeat vía MQTT (broker de firmware) cada HEARTBEAT_INTERVAL
   if (millis() - lastHeartbeat >= HEARTBEAT_INTERVAL) {
     lastHeartbeat = millis();
-    String hbMsg = String("{\"mac\":\"") + deviceMac +
-                   "\",\"name\":\"" + DEVICE_NAME +
-                   "\",\"uptime\":" + millis() + "}";
+    String hbMsg = String("{\"mac\":\"") + deviceMac + "\",\"name\":\"" + DEVICE_NAME + "\",\"uptime\":" + millis() + "}";
     mqttClientFW.publish("esp32/heartbeat", hbMsg.c_str(), false);
   }
-  
+
   vTaskDelay(1000 / portTICK_PERIOD_MS);
 }
