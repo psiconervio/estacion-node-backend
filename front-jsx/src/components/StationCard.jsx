@@ -16,7 +16,7 @@ export default function StationCard({ station, onViewDetails }) {
   // Formatea la fecha y hora en un formato legible en español
   const formattedDate = date.toLocaleDateString("es-ES", {
     year: "numeric",
-    month: "long",
+    month: "numeric",
     day: "numeric",
   });
 
@@ -116,7 +116,7 @@ export default function StationCard({ station, onViewDetails }) {
       <div className="flex items-center justify-between text-sm">
         <span className="text-gray-500 dark:text-gray-400">
           {/* Última actualización: {new Date(station.lastUpdate).toLocaleString()} */}
-          Última actualización: {formattedDate} a las {formattedTime}
+          Última actualización: {formattedDate}, {formattedTime}
 
           {/* Última actualización: {station.lastUpdate} */}
         </span>
