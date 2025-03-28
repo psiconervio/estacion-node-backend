@@ -11,6 +11,22 @@ import {
 } from 'lucide-react';
 
 export default function StationCard({ station, onViewDetails }) {
+  const date = new Date(station?.lastUpdate);
+
+  // Formatea la fecha y hora en un formato legible en español
+  const formattedDate = date.toLocaleDateString("es-ES", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  const formattedTime = date.toLocaleTimeString("es-ES", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+
+
   const getStatusColor = (status) => {
     switch (status) {
       case 'online': return 'bg-green-500';
@@ -100,7 +116,9 @@ export default function StationCard({ station, onViewDetails }) {
       <div className="flex items-center justify-between text-sm">
         <span className="text-gray-500 dark:text-gray-400">
           {/* Última actualización: {new Date(station.lastUpdate).toLocaleString()} */}
-          Última actualización: {station.lastUpdate}
+          Última actualización: {formattedDate} a las {formattedTime}
+
+          {/* Última actualización: {station.lastUpdate} */}
         </span>
         <button
           onClick={() => onViewDetails(station)}
