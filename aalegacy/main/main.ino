@@ -17,7 +17,7 @@
 // -------------------------
 WiFiNetwork networks[] = {
   {"Tplink4568", "delc@mpo4268"},
-  {"OtraRed", "otraClave"}  // Red secundaria de respaldo
+  {"Auditorio Nodo", "auditorio.nodo"}  // Red secundaria de respaldo
 };
 const int numNetworks = sizeof(networks) / sizeof(WiFiNetwork);
 
@@ -41,6 +41,7 @@ unsigned long ultimoEnvio = 0;
 String deviceMac;
 
 // -------------------------
+
 // SETUP
 // -------------------------
 void setup() {
@@ -68,6 +69,10 @@ void setup() {
 void loop() {
   // Ejecutar loop del módulo OTA para procesar mensajes MQTT
   otaLoop();
+    // Publicar heartbeat cada 1 minuto
+    deviceMac = WiFi.macAddress();
+
+    otaHeartbeat(); // Envía el heartbeat cada 60 segundos
 
   // Verificar conexión WiFi en cada iteración
   if (WiFi.status() != WL_CONNECTED) {
