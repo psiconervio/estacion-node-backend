@@ -12,20 +12,24 @@ import {
 
 export default function StationCard({ station, onViewDetails }) {
   // const date = new Date(station?.lastUpdate);
-  const adjustedDate = new Date(date.getTime() + 3 * 60 * 60 * 1000); 
+  const date = new Date(station?.lastUpdate);
 
-  // Formatea la fecha y hora en un formato legible en español
+  // Ajustar la fecha manualmente sumando o restando horas
+  const adjustedDate = new Date(date.getTime() + 3 * 60 * 60 * 1000); // Agrega 3 horas
+  
   const formattedDate = adjustedDate.toLocaleDateString("es-ES", {
     year: "numeric",
     month: "numeric",
     day: "numeric",
   });
-
+  
   const formattedTime = adjustedDate.toLocaleTimeString("es-ES", {
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
   });
+  
+  console.log(`${formattedDate} ${formattedTime}`);
 
 
   const getStatusColor = (status) => {
