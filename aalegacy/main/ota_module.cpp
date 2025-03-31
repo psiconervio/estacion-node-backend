@@ -3,6 +3,8 @@
 #include <PubSubClient.h>
 #include <HTTPClient.h>
 #include <Update.h>
+#include <WiFiClient.h>
+
 
 // Configuración para el broker OTA
 const char* MQTT_FW_HOST = "ad11f935a9c74146a4d2e647921bf024.s1.eu.hivemq.cloud";
