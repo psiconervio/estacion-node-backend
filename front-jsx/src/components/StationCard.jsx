@@ -11,7 +11,8 @@ import {
 } from 'lucide-react';
 
 export default function StationCard({ station, onViewDetails }) {
-  const date = new Date(station?.lastUpdate);
+  // const date = new Date(station?.lastUpdate);
+  const date = new Date(date.getTime() + 3 * 60 * 60 * 1000); 
 
   // Formatea la fecha y hora en un formato legible en español
   const formattedDate = date.toLocaleDateString("es-ES", {
