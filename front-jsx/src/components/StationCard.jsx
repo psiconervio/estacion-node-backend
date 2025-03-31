@@ -12,16 +12,16 @@ import {
 
 export default function StationCard({ station, onViewDetails }) {
   // const date = new Date(station?.lastUpdate);
-  const date = new Date(date.getTime() + 3 * 60 * 60 * 1000); 
+  const adjustedDate = new Date(date.getTime() + 3 * 60 * 60 * 1000); 
 
   // Formatea la fecha y hora en un formato legible en español
-  const formattedDate = date.toLocaleDateString("es-ES", {
+  const formattedDate = adjustedDate.toLocaleDateString("es-ES", {
     year: "numeric",
     month: "numeric",
     day: "numeric",
   });
 
-  const formattedTime = date.toLocaleTimeString("es-ES", {
+  const formattedTime = adjustedDate.toLocaleTimeString("es-ES", {
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
