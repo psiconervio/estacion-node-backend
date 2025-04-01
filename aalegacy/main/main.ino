@@ -2,6 +2,7 @@
 #include <WiFi.h>
 #include "wifi_module.h"
 #include "ota_module.h"
+#include "config.h"
 #include <DHT.h>
 #include <Arduino_JSON.h>
 #include <HTTPClient.h>
@@ -9,15 +10,16 @@
 // -------------------------
 // CONFIGURACIONES GENERALES
 // -------------------------
-#define FIRMWARE_VERSION "1.0.0"
-#define DEVICE_NAME "NODO"
+// #define FIRMWARE_VERSION "1.0.0"
+// #define DEVICE_NAME "NODO"
 
 // -------------------------
 // Configuración de redes WiFi (lista de respaldo)
 // -------------------------
 WiFiNetwork networks[] = {
   {"Tplink4568", "delc@mpo4268"},
-  {"Auditorio Nodo", "auditorio.nodo"}  // Red secundaria de respaldo
+  {"Auditorio Nodo", "auditorio.nodo"},  // Red secundaria de respaldo
+  {"PB02", "12345678"}
 };
 const int numNetworks = sizeof(networks) / sizeof(WiFiNetwork);
 

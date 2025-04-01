@@ -1,4 +1,5 @@
 #include "ota_module.h"
+#include "config.h"
 #include <WiFiClientSecure.h>
 #include <PubSubClient.h>
 #include <HTTPClient.h>
@@ -7,11 +8,11 @@
 
 // Definiciones de firmware y nombre del dispositivo (puedes definirlas en otro sitio si lo prefieres)
 // #ifndef FIRMWARE_VERSION
-  #define FIRMWARE_VERSION "1.0.0"
+  // #define FIRMWARE_VERSION "1.0.0"
 // #endif
 
 // #ifndef DEVICE_NAME
-  #define DEVICE_NAME "NODO"
+  // #define DEVICE_NAME "NODO"
 // #endif
 
 // Configuración para el broker OTA
